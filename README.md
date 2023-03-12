@@ -39,6 +39,16 @@ Just clone the project and start `./manage.py` to bootstrap a virtual environmen
     tox
     update_req
 ...
+
+# start local dev. web server:
+~/django-for-runners$ ./manage.py run_dev_server
+
+# run tests:
+~/django-for-runners$ ./manage.py test
+# or with coverage
+~/django-for-runners$ ./manage.py coverage
+# or via tox:
+~/django-for-runners$ ./manage.py tox
 ```
 
 
