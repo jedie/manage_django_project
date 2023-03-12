@@ -9,7 +9,15 @@ class Command(BaseManageCommand):
     help = 'Build a new release and publish it to PyPi'
 
     def handle(self, *args, **options):
-        verbose_check_call('./manage.py', 'test')  # don't publish if tests fail
+        # don't publish if tests fail:
+        verbose_check_call(
+            './manage.py',
+            'test',
+            extra_env=dict(  # Use the test settings:
+                DJANGO_SETTINGS_MODULE=project_info.config.test_settings,
+            ),
+        )
+        # test pass -> publish:
         self.publish()
 
     def publish(self):
