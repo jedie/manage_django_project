@@ -34,6 +34,9 @@ class Command(BaseManageCommand):
 
         verbose = options['verbosity'] > 0
 
+        old_coverage_data = cwd / '.coverage'
+        old_coverage_data.unlink(missing_ok=True)
+
         args = ['coverage', 'run']
         if context := options['context']:
             args.append('--context')
