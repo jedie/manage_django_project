@@ -20,7 +20,7 @@ def main():
             project_root_path=Path(manage_django_project_example.__file__).parent.parent,
             prod_settings='manage_django_project_example.settings.prod',
             local_settings='manage_django_project_example.settings.local',
-            test_settings='manage_django_project_example.settings.test',
+            test_settings='manage_django_project_example.settings.tests',
         )
     )
 
