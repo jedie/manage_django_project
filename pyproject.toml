@@ -1,6 +1,6 @@
 [project]
 name = "manage_django_project"
-version = "0.1.0rc1"
+version = "0.1.0"
 description = "Helper to develop Django projects."
 readme = "README.md"
 authors = [
