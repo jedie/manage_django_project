@@ -8,10 +8,43 @@
 
 Helper to develop Django projects.
 
+
+## How to use it
+
+TBD
+
+
+## Start hacking
+
+Just clone the project and start `./manage.py` to bootstrap a virtual environment:
+
+```
+# Install base requirements for bootstraping:
+~$ sudo apt install python3-pip python3-venv
+
+# Get the sources:
+~$ git clone https://github.com/jedie/manage_django_project.git
+~$ cd manage_django_project/
+
+# Just call manage.py:
+~/manage_django_project$ ./manage.py --help
+...
+[manage_django_project]
+    code_style
+    coverage
+    install
+    project_info
+    run_dev_server
+    safety
+    tox
+    update_req
+...
+```
+
+
 ## history
 
-
-* [**dev**](https://github.com/jedie/django-for-runners/compare/v0.0.1...main)
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.0.1...main)
   * TBC
-* v0.0.1 - 11.03.2023
-  * Just create a pre-alpha release to save the PyPi package name ;)
+* v0.0.1 - 12.03.2023
+  * Init first version
