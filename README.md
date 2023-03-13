@@ -54,8 +54,10 @@ Just clone the project and start `./manage.py` to bootstrap a virtual environmen
 
 ## history
 
-* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.1.1...main)
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.2.0...main)
   * TBC
+* [v0.2.0 - 14.03.2023](https://github.com/jedie/manage_django_project/compare/v0.1.1...v0.2.0)
+  * Add a optional shell via cmd2
 * [v0.1.1 - 13.03.2023](https://github.com/jedie/manage_django_project/compare/v0.1.0...v0.1.1)
   * Add `ProjectInfo.distribution_name` and set if from `pyproject.toml`
   * publish command: Use `distribution_name` in publish call

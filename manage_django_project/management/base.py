@@ -8,7 +8,7 @@ class BaseManageCommand(RichCommand):
 
     def execute(self, *args, **options):
         if options['verbosity']:
-            self.console.print('_' * 100)
+            self.console.print('_' * self.console.width)
             self.console.print(f'[bold]{self.help}')
 
         project_info.assert_initialized()
@@ -19,7 +19,6 @@ class BaseManageCommand(RichCommand):
 class BasePassManageCommand(RichCommand):
     help = ''
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.console.print(f'\n[bold]{self.help}')
+    def run_from_argv(self, argv):
+        self.console.print('_' * self.console.width)
+        self.console.print(f'[bold]{self.help}')

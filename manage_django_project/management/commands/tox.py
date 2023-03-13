@@ -9,12 +9,11 @@ from manage_django_project.management.commands.coverage import coverage_combine_
 class Command(BasePassManageCommand):
     help = 'Run tests via tox'
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def run_from_argv(self, argv):
+        super().run_from_argv(argv)
 
-        # Just pass everything to the origin tox CLI:
-
-        verbose_check_call(sys.executable, '-m', 'tox', *sys.argv[2:])
+        # Just pass every argument to the origin tox CLI:
+        verbose_check_call(sys.executable, '-m', 'tox', *argv[2:])
 
         coverage_combine_report(verbose=True)
 
