@@ -24,4 +24,5 @@ class Command(BaseManageCommand):
         publish_package(
             module=project_info.config.module,
             package_path=project_info.config.project_root_path,
+            distribution_name=project_info.distribution_name,
         )
