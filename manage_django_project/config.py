@@ -38,6 +38,7 @@ class ProjectInfo:
 
     config: ManageConfig = None
     pyproject_toml_path: Optional[Path] = None
+    distribution_name: Optional[str] = None
     module_version: Optional[Version] = None
 
     def initialize(self, config: ManageConfig):
@@ -45,7 +46,9 @@ class ProjectInfo:
 
         self.module_version = Version(self.config.module.__version__)
         self.pyproject_toml_path = Path(self.config.project_root_path, 'pyproject.toml')
-        assert_is_file(self.pyproject_toml_path)
+
+        pyproject_toml = self.get_pyproject_toml()
+        self.distribution_name = pyproject_toml['project']['name']
 
         self.initialized = True
 
@@ -53,6 +56,7 @@ class ProjectInfo:
         assert self.initialized is True, f'No initialized: {self}'
 
     def get_pyproject_toml(self) -> dict:
+        assert_is_file(self.pyproject_toml_path)
         pyproject_toml = tomllib.loads(self.pyproject_toml_path.read_text(encoding='UTF-8'))
         return pyproject_toml
 
