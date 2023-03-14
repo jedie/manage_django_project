@@ -16,6 +16,7 @@ dependencies = [
 ]
 [project.optional-dependencies]
 dev = [
+    "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "pip-tools",  # https://github.com/jazzband/pip-tools/
     "tblib",   # https://github.com/ionelmc/python-tblib
     "tox",  # https://github.com/tox-dev/tox

@@ -9,7 +9,7 @@ from cmd2.constants import CMD_ATTR_ARGPARSER, CMD_ATTR_PRESERVE_QUOTES
 from cmd2.decorators import _set_parser_prog
 from django.core.management import BaseCommand, CommandParser, get_commands
 from manageprojects.utilities.subprocess_utils import verbose_check_call
-from rich import print
+from rich import get_console, print
 from rich.console import Console
 
 from manage_django_project.config import project_info
@@ -48,15 +48,18 @@ class DjangoCommand:
         verbose_check_call(*args, verbose=verbose, env=env)
 
 
-class App(cmd2.Cmd):
+class ManageDjangoProjectApp(cmd2.Cmd):
     # Remove some default cmd2 commands:
     delattr(cmd2.Cmd, 'do_edit')
     delattr(cmd2.Cmd, 'do_shell')
     delattr(cmd2.Cmd, 'do_run_script')
     delattr(cmd2.Cmd, 'do_run_pyscript')
 
-    def __init__(self, *args, console: Console, **kwargs):
-        self.console = console
+    def __init__(self, *args, console: Console = None, **kwargs):
+        if not console:
+            self.console = get_console()
+        else:
+            self.console = console
 
         for command_name, app_name in get_commands().items():
             if command_name == 'shell':
@@ -116,5 +119,5 @@ class Command(BasePassManageCommand):
     def run_from_argv(self, argv):
         super().run_from_argv(argv)
 
-        app = App(console=self.console)
+        app = ManageDjangoProjectApp(console=self.console)
         app.cmdloop()
