@@ -60,21 +60,30 @@ class ProjectInfo:
         pyproject_toml = tomllib.loads(self.pyproject_toml_path.read_text(encoding='UTF-8'))
         return pyproject_toml
 
-    def get_current_settings(self, argv):
+    def get_settings_by_command(self, *, command_name) -> str:
+        own_commands = get_own_commands()
+
+        if command_name in ('test', 'coverage', 'tox'):
+            return self.config.test_settings
+
+        if command_name in own_commands:
+            return self.config.local_settings
+
+        return self.config.prod_settings
+
+    def get_current_settings(self, argv) -> Optional[str]:
+        for arg in argv:
+            if arg.startswith('--settings'):
+                # e.g.: Start a manage command with --settings option -> don't force any settings
+                return
+
         settings_name = self.config.prod_settings
 
         if len(argv) == 1:
-            # e.g.: just start "./manage.py" to display the --help page:
+            # e.g.: just start "./manage.py"
             settings_name = self.config.local_settings
         elif len(argv) > 1:
-            command = argv[1]
-            own_commands = get_own_commands()
-
-            if command in own_commands:
-                settings_name = self.config.local_settings
-
-            if command in ('test', 'coverage', 'tox'):
-                settings_name = self.config.test_settings
+            settings_name = self.get_settings_by_command(command_name=argv[1])
 
         return settings_name
 

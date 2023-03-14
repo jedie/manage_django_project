@@ -16,6 +16,10 @@ astor==0.8.1 \
     --hash=sha256:070a54e890cefb5b3739d19f30f5a5ec840ffc9c50ffa7d23cc9fc1a38ebbfc5 \
     --hash=sha256:6a6effda93f4e1ce9f618779b2dd1d9d84f1e32812c23a29b3fff6fd7f63fa5e
     # via flynt
+attrs==22.2.0 \
+    --hash=sha256:29e95c7f6778868dbd49170f98f8818f78f3dc5e0e37c0b1f474e3561b240836 \
+    --hash=sha256:c9227bfc2f01993c03f68db37d1d15c9690188323c067c641f1a35ca58185f99
+    # via cmd2
 autopep8==2.0.2 \
     --hash=sha256:86e9303b5e5c8160872b2f5ef611161b2893e9bfe8ccc7e2f76385947d57a2f1 \
     --hash=sha256:f9849cdd62108cb739dbcdbfb7fdcc9a30d1b63c4cc3e1c1f893b5360941b61c
@@ -63,15 +67,10 @@ build==0.10.0 \
     --hash=sha256:af266720050a66c893a6096a2f410989eeac74ff9a68ba194b3f6473e8e26171 \
     --hash=sha256:d5b71264afdb5951d6704482aac78de887c80691c52b88a9ad195983ca2c9269
     # via pip-tools
-bx-django-utils==49 \
-    --hash=sha256:343397a40a61b4ea523425163905b7f5d8406ba147697c9b1165266b71b6ced0 \
-    --hash=sha256:dbf629ca7f9bb3e0d77ce9c0a8cfab593da2b441564d65ec00bd47b5d0628a50
-    # via manage-django-project (pyproject.toml)
 bx-py-utils==76 \
     --hash=sha256:c9fcedc76daa9782b0a0c535d0d803061f61117f95957862ef58253f3c35fc0e \
     --hash=sha256:f15c64731cd9df0ca9a7bd3993fc0bf4faeb25fc30157348eb9735bf0989a210
     # via
-    #   bx-django-utils
     #   django-tools
     #   manage-django-project (pyproject.toml)
     #   manageprojects
@@ -242,6 +241,10 @@ click==8.1.3 \
     #   pip-tools
     #   rich-click
     #   safety
+cmd2==2.4.3 \
+    --hash=sha256:71873c11f72bd19e2b1db578214716f0d4f7c8fa250093c601265a9a717dee52 \
+    --hash=sha256:f1988ff2fff0ed812a2d25218a081b0fa0108d45b48ba2a9272bb98091b654e6
+    # via manage-django-project (pyproject.toml)
 codespell==2.2.4 \
     --hash=sha256:0b4620473c257d9cde1ff8998b26b2bb209a35c2b7489f5dc3436024298ce83a \
     --hash=sha256:7d984b8130108e6f82524b7d09f8b7bf2fb1e398c5d4b37d9e2bd310145b3e29
@@ -348,7 +351,6 @@ django==4.1.7 \
     --hash=sha256:44f714b81c5f190d9d2ddad01a532fe502fa01c4cb8faf1d081f4264ed15dcd8 \
     --hash=sha256:f2f431e75adc40039ace496ad3b9f17227022e8b11566f4b363da44c7e44761e
     # via
-    #   bx-django-utils
     #   django-rich
     #   django-tools
 django-rich==1.5.0 \
@@ -373,9 +375,9 @@ editorconfig==0.12.3 \
     # via
     #   manage-django-project (pyproject.toml)
     #   manageprojects
-filelock==3.9.0 \
-    --hash=sha256:7b319f24340b51f55a2bf7a12ac0755a9b03e718311dac567a0f4f7fabd2f5de \
-    --hash=sha256:f58d535af89bb9ad5cd4df046f741f8553a418c01a7856bf0d173bbc9f6bd16d
+filelock==3.9.1 \
+    --hash=sha256:4427cdda14a1c68e264845142842d6de2d0fa2c15ba31571a3d9c9a1ec9d191c \
+    --hash=sha256:e393782f76abea324dee598d2ea145b857a20df0e0ee4f80fcf35e72a341d2c7
     # via
     #   tox
     #   virtualenv
@@ -434,9 +436,9 @@ keyring==23.13.1 \
     --hash=sha256:771ed2a91909389ed6148631de678f82ddc73737d85a927f382a8a1b157898cd \
     --hash=sha256:ba2e15a9b35e21908d0aaf4e0a47acc52d6ae33444df0da2b49d41a46ef6d678
     # via twine
-manageprojects==0.9.4 \
-    --hash=sha256:3aa98cecdaa42685206e127f385c73f9091e3edd826786eee4dc2c58e206d9c7 \
-    --hash=sha256:83b8b3c26df462d25a232f6bf276a0af80666373f96f1a10a0b6160e0e2e028a
+manageprojects==0.9.6 \
+    --hash=sha256:5c8d63bef1cf91a8b081b9e0716e44db397153b951dae5cc067d9305e2bb6e0f \
+    --hash=sha256:d30a530326d44306cb2d4e93a2669fca5aae75b40fe409b2965ce02661a16130
     # via manage-django-project (pyproject.toml)
 markdown-it-py==2.2.0 \
     --hash=sha256:5a35f8d1870171d9acc47b99612dc146129b631baf04970128b568f190d0cc30 \
@@ -603,6 +605,9 @@ pygments==2.14.0 \
     # via
     #   readme-renderer
     #   rich
+pyperclip==1.8.2 \
+    --hash=sha256:105254a8b04934f0bc84e9c24eb360a591aaf6535c9def5f29d92af107a9bf57
+    # via cmd2
 pyproject-api==1.5.1 \
     --hash=sha256:435f46547a9ff22cf4208ee274fca3e2869aeb062a4834adfc99a4dd64af3cf9 \
     --hash=sha256:4698a3777c2e0f6b624f8a4599131e2a25376d90fe8d146d7ac74c67c6f97c43
@@ -619,10 +624,6 @@ python-slugify==8.0.1 \
     --hash=sha256:70ca6ea68fe63ecc8fa4fcf00ae651fc8a5d02d93dcd12ae6d4fc7ca46c4d395 \
     --hash=sha256:ce0d46ddb668b3be82f4ed5e503dbc33dd815d83e2eb6824211310d3fb172a27
     # via cookiecutter
-python-stdnum==1.18 \
-    --hash=sha256:bcc763d9c49ae23da5d2b7a686d5fd1deec9d9051341160a10d1ac723a26bec0 \
-    --hash=sha256:d7f2a3c7ef4635c957b9cbdd9b1993d1f6ee3a2959f03e172c45440d99f296eb
-    # via bx-django-utils
 pyupgrade==3.3.1 \
     --hash=sha256:3b93641963df022d605c78aeae4b5956a5296ea24701eafaef9c487527b77e60 \
     --hash=sha256:f88bce38b0ba92c2a9a5063c8629e456e8d919b67d2d42c7ecab82ff196f9813
@@ -765,6 +766,10 @@ sqlparse==0.4.3 \
     --hash=sha256:0323c0ec29cd52bceabc1b4d9d579e311f3e4961b98d174201d5622a23b85e34 \
     --hash=sha256:69ca804846bb114d2ec380e4360a8a340db83f0ccf3afceeb1404df028f57268
     # via django
+tblib==1.7.0 \
+    --hash=sha256:059bd77306ea7b419d4f76016aef6d7027cc8a0785579b5aad198803435f882c \
+    --hash=sha256:289fa7359e580950e7d9743eab36b0691f0310fce64dee7d9c31065b8f723e23
+    # via manage-django-project (pyproject.toml)
 text-unidecode==1.3 \
     --hash=sha256:1311f10e8b895935241623731c2ba64f4c455287888b18189350b67134a822e8 \
     --hash=sha256:bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93
@@ -815,17 +820,21 @@ urllib3==1.26.15 \
     # via
     #   requests
     #   twine
-virtualenv==20.20.0 \
-    --hash=sha256:3c22fa5a7c7aa106ced59934d2c20a2ecb7f49b4130b8bf444178a16b880fa45 \
-    --hash=sha256:a8a4b8ca1e28f864b7514a253f98c1d62b64e31e77325ba279248c65fb4fcef4
+virtualenv==20.21.0 \
+    --hash=sha256:31712f8f2a17bd06234fa97fdf19609e789dd4e3e4bf108c3da71d710651adbc \
+    --hash=sha256:f50e3e60f990a0757c9b68333c9fdaa72d7188caa417f96af9e52407831a3b68
     # via tox
+wcwidth==0.2.6 \
+    --hash=sha256:795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e \
+    --hash=sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0
+    # via cmd2
 webencodings==0.5.1 \
     --hash=sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78 \
     --hash=sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923
     # via bleach
-wheel==0.38.4 \
-    --hash=sha256:965f5259b566725405b05e7cf774052044b1ed30119b5d586b2703aafe8719ac \
-    --hash=sha256:b60533f3f5d530e971d6737ca6d58681ee434818fab630c83a734bb10c083ce8
+wheel==0.40.0 \
+    --hash=sha256:cd1196f3faee2b31968d626e1731c94f99cbdb67cf5a46e4f5656cbee7738873 \
+    --hash=sha256:d236b20e7cb522daf2390fa84c55eea81c5c30190f90f29ae2ca1ad8355bf247
     # via pip-tools
 zipp==3.15.0 \
     --hash=sha256:112929ad649da941c23de50f356a2b5570c954b65150642bccdd66bf194d224b \

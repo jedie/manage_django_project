@@ -1,6 +1,6 @@
 [project]
 name = "manage_django_project"
-version = "0.1.1"
+version = "0.2.0"
 description = "Helper to develop Django projects."
 readme = "README.md"
 authors = [
@@ -12,10 +12,12 @@ dependencies = [
     "manageprojects",  # https://github.com/jedie/manageprojects
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "django-rich",  # https://github.com/adamchainz/django-rich
+    "cmd2",  # https://github.com/python-cmd2/cmd2
 ]
 [project.optional-dependencies]
 dev = [
     "pip-tools",  # https://github.com/jazzband/pip-tools/
+    "tblib",   # https://github.com/ionelmc/python-tblib
     "tox",  # https://github.com/tox-dev/tox
     "coverage",  # https://github.com/nedbat/coveragepy
     "darker>=1.7",  # https://github.com/akaihola/darker
