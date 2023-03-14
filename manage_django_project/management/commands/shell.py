@@ -29,7 +29,6 @@ class DjangoCommand:
         verbose = statement.args != '--help'
 
         if verbose:
-            print(f'{statement=}')
             print('_' * self.console.width)
             print(f'[magenta]call command[/magenta] [cyan]{self.package_name}.[bold]{self.command_name}\n')
 
