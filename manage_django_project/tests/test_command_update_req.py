@@ -1,12 +1,10 @@
 from unittest.mock import patch
 
-from django.core.management import call_command
 from django.test import SimpleTestCase
-from manageprojects.test_utils.subprocess import SubprocessCallMock
 
 from manage_django_project.management.commands import shell, update_req
-from manage_django_project.tests import PROJECT_ROOT
 from manage_django_project.tests.cmd2_test_utils import BaseShellTestCase
+from manage_django_project.tests.command_test_utils import call_command_capture_subprocess
 
 
 class UpdateReqShellTestCase(BaseShellTestCase):
@@ -22,10 +20,7 @@ class UpdateReqTestCase(SimpleTestCase):
     maxDiff = None
 
     def test_basic_update_req(self):
-        with SubprocessCallMock() as call_mock:
-            call_command(update_req.Command())
-
-        popenargs = call_mock.get_popenargs(rstrip_paths=(PROJECT_ROOT,))
+        popenargs = call_command_capture_subprocess(cmd_module=update_req)
         self.assertEqual(
             popenargs,
             [
