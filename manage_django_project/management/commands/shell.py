@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 from importlib import import_module
@@ -8,11 +9,14 @@ from cmd2.constants import CMD_ATTR_ARGPARSER, CMD_ATTR_PRESERVE_QUOTES
 from cmd2.decorators import _set_parser_prog
 from django.core.management import BaseCommand, CommandParser, get_commands
 from manageprojects.utilities.subprocess_utils import verbose_check_call
-from rich import print
+from rich import get_console, print
 from rich.console import Console
 
 from manage_django_project.config import project_info
 from manage_django_project.management.base import BasePassManageCommand
+
+
+logger = logging.getLogger(__name__)
 
 
 class DjangoCommand:
@@ -29,7 +33,6 @@ class DjangoCommand:
         verbose = statement.args != '--help'
 
         if verbose:
-            print(f'{statement=}')
             print('_' * self.console.width)
             print(f'[magenta]call command[/magenta] [cyan]{self.package_name}.[bold]{self.command_name}\n')
 
@@ -45,15 +48,18 @@ class DjangoCommand:
         verbose_check_call(*args, verbose=verbose, env=env)
 
 
-class App(cmd2.Cmd):
+class ManageDjangoProjectApp(cmd2.Cmd):
     # Remove some default cmd2 commands:
     delattr(cmd2.Cmd, 'do_edit')
     delattr(cmd2.Cmd, 'do_shell')
     delattr(cmd2.Cmd, 'do_run_script')
     delattr(cmd2.Cmd, 'do_run_pyscript')
 
-    def __init__(self, *args, console: Console, **kwargs):
-        self.console = console
+    def __init__(self, *args, console: Console = None, **kwargs):
+        if not console:
+            self.console = get_console()
+        else:
+            self.console = console
 
         for command_name, app_name in get_commands().items():
             if command_name == 'shell':
@@ -64,15 +70,30 @@ class App(cmd2.Cmd):
             categorize(func=cmd, category=app_name)
 
             pkg_name = f'{app_name}.management.commands.{command_name}'
-            module = import_module(pkg_name)
+            try:
+                module = import_module(pkg_name)
+            except Exception as err:
+                msg = f'Error import "{pkg_name}": {err}'
+                logger.exception(msg)
+                print(f'[red]{msg}')
+                continue
+
             CommandClass = module.Command
             assert issubclass(CommandClass, BaseCommand)
-            cmd.__doc__ = CommandClass.help
 
-            cmd_instance: BaseCommand = CommandClass()
+            try:
+                cmd_instance: BaseCommand = CommandClass()
+            except Exception as err:
+                msg = f'Error make instance of "{pkg_name}": {err}'
+                logger.exception(msg)
+                print(f'[red]{msg}')
+                continue
+
             parser: CommandParser = cmd_instance.create_parser(prog_name='manage.py', subcommand=command_name)
 
             _set_parser_prog(parser, prog='./manage.py')
+
+            cmd.__doc__ = CommandClass.help
 
             setattr(cmd, CMD_ATTR_ARGPARSER, parser)
             setattr(cmd, CMD_ATTR_PRESERVE_QUOTES, False)
@@ -98,5 +119,5 @@ class Command(BasePassManageCommand):
     def run_from_argv(self, argv):
         super().run_from_argv(argv)
 
-        app = App(console=self.console)
+        app = ManageDjangoProjectApp(console=self.console)
         app.cmdloop()
