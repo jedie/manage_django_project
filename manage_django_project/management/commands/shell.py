@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 from importlib import import_module
@@ -13,6 +14,9 @@ from rich.console import Console
 
 from manage_django_project.config import project_info
 from manage_django_project.management.base import BasePassManageCommand
+
+
+logger = logging.getLogger(__name__)
 
 
 class DjangoCommand:
@@ -63,15 +67,30 @@ class App(cmd2.Cmd):
             categorize(func=cmd, category=app_name)
 
             pkg_name = f'{app_name}.management.commands.{command_name}'
-            module = import_module(pkg_name)
+            try:
+                module = import_module(pkg_name)
+            except Exception as err:
+                msg = f'Error import "{pkg_name}": {err}'
+                logger.exception(msg)
+                print(f'[red]{msg}')
+                continue
+
             CommandClass = module.Command
             assert issubclass(CommandClass, BaseCommand)
-            cmd.__doc__ = CommandClass.help
 
-            cmd_instance: BaseCommand = CommandClass()
+            try:
+                cmd_instance: BaseCommand = CommandClass()
+            except Exception as err:
+                msg = f'Error make instance of "{pkg_name}": {err}'
+                logger.exception(msg)
+                print(f'[red]{msg}')
+                continue
+
             parser: CommandParser = cmd_instance.create_parser(prog_name='manage.py', subcommand=command_name)
 
             _set_parser_prog(parser, prog='./manage.py')
+
+            cmd.__doc__ = CommandClass.help
 
             setattr(cmd, CMD_ATTR_ARGPARSER, parser)
             setattr(cmd, CMD_ATTR_PRESERVE_QUOTES, False)
