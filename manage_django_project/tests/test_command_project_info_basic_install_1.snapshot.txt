@@ -1,0 +1,17 @@
+
+manage_config = ProjectInfo(
+    initialized=True,
+    config=ManageConfig(
+        module=<module 'manage_django_project_example' from 
+'.../manage_django_project_example/__init__.p
+y'>,
+        project_root_path=PosixPath('...'),
+        prod_settings='manage_django_project_example.settings.prod',
+        local_settings='manage_django_project_example.settings.local',
+        test_settings='manage_django_project_example.settings.tests'
+    ),
+    pyproject_toml_path=PosixPath('.../pyproj
+ect.toml'),
+    distribution_name='manage_django_project',
+    module_version=<Version('<mocked>')>
+)
