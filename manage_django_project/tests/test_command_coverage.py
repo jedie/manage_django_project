@@ -12,10 +12,10 @@ class CoverageTestCase(SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
-                ['.../.venv/bin/coverage', 'run'],
-                ['.../.venv/bin/coverage', 'combine', '--append'],
-                ['.../.venv/bin/coverage', 'report'],
-                ['.../.venv/bin/coverage', 'xml'],
-                ['.../.venv/bin/coverage', 'json'],
+                ['.../bin/coverage', 'run'],
+                ['.../bin/coverage', 'combine', '--append'],
+                ['.../bin/coverage', 'report'],
+                ['.../bin/coverage', 'xml'],
+                ['.../bin/coverage', 'json'],
             ],
         )

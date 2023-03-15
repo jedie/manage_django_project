@@ -1,5 +1,3 @@
-import sys
-
 from manageprojects.utilities import code_style
 from manageprojects.utilities.subprocess_utils import verbose_check_call
 
@@ -24,4 +22,3 @@ class Command(BaseManageCommand):
             exit_on_error=True,
         )
         print('Code style: OK')
-        sys.exit(0)
