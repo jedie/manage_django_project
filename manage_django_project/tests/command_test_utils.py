@@ -17,11 +17,16 @@ def get_rstrip_paths():
     )
 
 
-def call_command_capture_subprocess(cmd_module) -> list[str]:
+def call_command_capture_subprocess(cmd_module, direct_call=False) -> list[str]:
     assert inspect.ismodule(cmd_module)
 
+    command = cmd_module.Command()
+
     with SubprocessCallMock() as call_mock:
-        call_command(cmd_module.Command())
+        if direct_call:
+            command.run_from_argv(argv=(sys.executable, cmd_module.__name__))
+        else:
+            call_command(command)
 
     popenargs = call_mock.get_popenargs(rstrip_paths=get_rstrip_paths())
     return popenargs

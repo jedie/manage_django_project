@@ -20,7 +20,8 @@ class UpdateReqTestCase(SimpleTestCase):
     maxDiff = None
 
     def test_basic_update_req(self):
-        popenargs = call_command_capture_subprocess(cmd_module=update_req)
+        popenargs = call_command_capture_subprocess(cmd_module=update_req, direct_call=True)
+
         self.assertEqual(
             popenargs,
             [
