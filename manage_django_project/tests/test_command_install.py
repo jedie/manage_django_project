@@ -24,6 +24,6 @@ class InstallTestCase(SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
-                ['.../.venv/bin/pip', 'install', '--no-deps', '-e', '.'],
+                ['.../bin/pip', 'install', '--no-deps', '-e', '.'],
             ],
         )

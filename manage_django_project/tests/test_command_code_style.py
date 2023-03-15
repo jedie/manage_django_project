@@ -24,7 +24,7 @@ class CodeStyleTestCase(SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
-                ['.../.venv/bin/darker', '--color'],
-                ['.../.venv/bin/flake8'],
+                ['.../bin/darker', '--color'],
+                ['.../bin/flake8'],
             ],
         )

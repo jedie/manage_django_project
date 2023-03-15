@@ -24,10 +24,10 @@ class UpdateReqTestCase(SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
-                ['.../.venv/bin/pip', 'install', '-U', 'pip'],
-                ['.../.venv/bin/pip', 'install', '-U', 'pip-tools'],
+                ['.../bin/pip', 'install', '-U', 'pip'],
+                ['.../bin/pip', 'install', '-U', 'pip-tools'],
                 [
-                    '.../.venv/bin/pip-compile',
+                    '.../bin/pip-compile',
                     '--verbose',
                     '--allow-unsafe',
                     '--resolver=backtracking',
@@ -38,7 +38,7 @@ class UpdateReqTestCase(SimpleTestCase):
                     'requirements.txt',
                 ],
                 [
-                    '.../.venv/bin/pip-compile',
+                    '.../bin/pip-compile',
                     '--verbose',
                     '--allow-unsafe',
                     '--resolver=backtracking',
@@ -49,7 +49,7 @@ class UpdateReqTestCase(SimpleTestCase):
                     '--output-file',
                     'requirements.dev.txt',
                 ],
-                ['.../.venv/bin/safety', 'check', '-r', 'requirements.dev.txt'],
-                ['.../.venv/bin/pip-sync', 'requirements.dev.txt'],
+                ['.../bin/safety', 'check', '-r', 'requirements.dev.txt'],
+                ['.../bin/pip-sync', 'requirements.dev.txt'],
             ],
         )

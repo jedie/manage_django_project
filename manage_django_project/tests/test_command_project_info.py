@@ -8,6 +8,7 @@ from manage_django_project import __version__
 from manage_django_project.management.commands import project_info, shell
 from manage_django_project.tests import PROJECT_ROOT
 from manage_django_project.tests.cmd2_test_utils import BaseShellTestCase
+from manage_django_project.tests.command_test_utils import ForceRichTerminalWidth
 
 
 class ProjectInfoShellTestCase(BaseShellTestCase):
@@ -23,12 +24,13 @@ class InstallTestCase(SimpleTestCase):
     maxDiff = None
 
     def test_basic_install(self):
-        output, stderr = captured_call_command(project_info)
+        with ForceRichTerminalWidth(width=120):
+            output, stderr = captured_call_command(project_info)
         self.assertEqual(stderr, '')
         self.assertIn('manage_config = ProjectInfo(', output)
         self.assertIn("distribution_name='manage_django_project',", output)
 
-        path_str = str(PROJECT_ROOT)
+        path_str = str(PROJECT_ROOT.parent)
         self.assertIn(path_str, output)
         stdout_output = output.replace(path_str, '...')
 

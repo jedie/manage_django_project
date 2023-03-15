@@ -4,8 +4,8 @@ from django.test import SimpleTestCase
 from manageprojects.test_utils.subprocess import SubprocessCallMock
 
 from manage_django_project.management.commands import shell, tox
-from manage_django_project.tests import PROJECT_ROOT
 from manage_django_project.tests.cmd2_test_utils import BaseShellTestCase
+from manage_django_project.tests.command_test_utils import get_rstrip_paths
 
 
 class ToxShellTestCase(BaseShellTestCase):
@@ -28,14 +28,14 @@ class ToxTestCase(SimpleTestCase):
             except SystemExit as err:
                 self.assertEqual(err.code, 0)
 
-        popenargs = call_mock.get_popenargs(rstrip_paths=(PROJECT_ROOT,))
+        popenargs = call_mock.get_popenargs(rstrip_paths=get_rstrip_paths())
         self.assertEqual(
             popenargs,
             [
-                ['.../.venv/bin/python', '-m', 'tox'],
-                ['.../.venv/bin/coverage', 'combine', '--append'],
-                ['.../.venv/bin/coverage', 'report'],
-                ['.../.venv/bin/coverage', 'xml'],
-                ['.../.venv/bin/coverage', 'json'],
+                ['.../bin/python', '-m', 'tox'],
+                ['.../bin/coverage', 'combine', '--append'],
+                ['.../bin/coverage', 'report'],
+                ['.../bin/coverage', 'xml'],
+                ['.../bin/coverage', 'json'],
             ],
         )

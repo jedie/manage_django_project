@@ -24,6 +24,6 @@ class SafetyTestCase(SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
-                ['.../.venv/bin/safety', 'check', '-r', 'requirements.dev.txt'],
+                ['.../bin/safety', 'check', '-r', 'requirements.dev.txt'],
             ],
         )
