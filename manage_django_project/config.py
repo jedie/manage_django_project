@@ -46,7 +46,7 @@ class ProjectInfo:
         self.initialized = True
 
     def assert_initialized(self):
-        assert self.initialized is True, f'No initialized: {self}'
+        assert self.initialized is True, f'Not initialized: {self}'
 
     def get_pyproject_toml(self) -> dict:
         assert_is_file(self.pyproject_toml_path)
