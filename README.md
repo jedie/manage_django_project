@@ -14,6 +14,24 @@ Helper to develop Django projects:
 * Alle Django manage commands useable as normal CLI **and** via `cmd2` shell
 * `cmd2` shell with autocomplete of all existing manage commands and all options
 * Auto switching Django settings between `local` and `tests` settings.
+* Helpful manage commands for developing:
+
+### Included Django management commands:
+
+[comment]: <> (✂✂✂ auto generated command_info start ✂✂✂)
+
+* `code_style` - Check/Fix project code style
+* `coverage` - Run tests with coverage and report
+* `install` - Just install the project as editable via pip (Useful if version has been changed)
+* `project_info` - Information about the current Django project
+* `publish` - Build a new release and publish it to PyPi
+* `run_dev_server` - Setup test project and run django developer server
+* `safety` - Run safety check against current requirements files
+* `shell` - Go into cmd2 shell with all registered Django manage commands
+* `tox` - Run tests via tox
+* `update_req` - Update project requirements via pip-tools
+
+[comment]: <> (✂✂✂ auto generated command_info end ✂✂✂)
 
 
 ## How to use it
@@ -98,26 +116,15 @@ PROJECT_SHELL_SCRIPT = BIN_PATH / 'manage_django_project_example'
 Just clone the project and start `./manage.py` to bootstrap a virtual environment:
 
 ```bash
-# Install base requirements for bootstraping:
+# Install base requirements:
 ~$ sudo apt install python3-pip python3-venv
 
 # Get the sources:
 ~$ git clone https://github.com/jedie/manage_django_project.git
 ~$ cd manage_django_project/
 
-# Just call manage.py:
-~/manage_django_project$ ./manage.py --help
-...
-[manage_django_project]
-    code_style
-    coverage
-    install
-    project_info
-    run_dev_server
-    safety
-    tox
-    update_req
-...
+# Just call manage.py and the magic happen:
+~/manage_django_project$ ./manage.py
 
 # start local dev. web server:
 ~/django-for-runners$ ./manage.py run_dev_server
