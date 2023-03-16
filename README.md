@@ -6,39 +6,125 @@
 [![Python Versions](https://img.shields.io/pypi/pyversions/manage_django_project)](https://github.com/jedie/manage_django_project/blob/main/pyproject.toml)
 [![License GPL-3.0-or-later](https://img.shields.io/pypi/l/manage_django_project)](https://github.com/jedie/manage_django_project/blob/main/LICENSE)
 
-Helper to develop Django projects.
+Helper to develop Django projects:
+
+* Easy bootstrap a virtual environment:
+  * Just get the sources and call `./manage.py`
+  * Only `python3-pip` and `python3-venv` package needed to bootstarp
+* Alle Django manage commands useable as normal CLI **and** via `cmd2` shell
+* `cmd2` shell with autocomplete of all existing manage commands and all options
+* Auto switching Django settings between `local` and `tests` settings.
+* Helpful manage commands for developing:
+
+### Included Django management commands:
+
+[comment]: <> (✂✂✂ auto generated command_info start ✂✂✂)
+
+* `code_style` - Check/Fix project code style
+* `coverage` - Run tests with coverage and report
+* `install` - Just install the project as editable via pip (Useful if version has been changed)
+* `project_info` - Information about the current Django project
+* `publish` - Build a new release and publish it to PyPi
+* `run_dev_server` - Setup test project and run django developer server
+* `safety` - Run safety check against current requirements files
+* `shell` - Go into cmd2 shell with all registered Django manage commands
+* `tox` - Run tests via tox
+* `update_req` - Update project requirements via pip-tools
+
+[comment]: <> (✂✂✂ auto generated command_info end ✂✂✂)
 
 
 ## How to use it
 
-TBD
+Some steps are needed to use `manage_django_project` in your project.
+
+Here a overview and below details:
+
+* add `manage_django_project` to your dev dependencies
+* You Django project should have separate settings for `prod`, `local` and `tests` (Last two ones are used by `manage_django_project`)
+* Add the bootstrap `manage.py`
+* Add a `__main__.py` with a `ManageConfig` and the `execute_django_from_command_line()` call.
+* Add the `__main__`-file as `[project.scripts]`
+* Add the name of your `[project.scripts]` into bootstrap `manage.py`
+
+All examples below used `manage_django_project_example`. You have to rename this string/path to your Django package name.
+
+Full example is here: https://github.com/jedie/manage_django_project/tree/main/manage_django_project_example
+
+
+If everything works as expected you can just call the `./manage.py` file and the magic happens ;)
+
+
+### __main__.py
+
+Add a `.../manage_django_project_example/__main__.py` file, looks like:
+
+```python
+from pathlib import Path
+
+import manage_django_project_example
+from manage_django_project.config import ManageConfig
+from manage_django_project.manage import execute_django_from_command_line
+
+
+def main():
+    """
+    entrypoint installed via pyproject.toml and [project.scripts] section.
+    Must be set in ./manage.py and PROJECT_SHELL_SCRIPT
+    """
+    execute_django_from_command_line(
+        config=ManageConfig(
+            module=manage_django_project_example,
+            #
+            # Path that contains your `pyproject.toml`:
+            project_root_path=Path(manage_django_project_example.__file__).parent.parent,
+            #
+            # Django settings used for all commands except test/coverage/tox:
+            local_settings='manage_django_project_example.settings.local',
+            #
+            # Django settings used for test/coverage/tox commands:
+            test_settings='manage_django_project_example.settings.tests',
+        )
+    )
+
+
+if __name__ == '__main__':
+    main()
+```
+
+
+### pyproject.toml
+
+```toml
+[project.scripts]
+manage_django_project_example = "manage_django_project_example.__main__:main"
+```
+
+
+### ./manage.py
+
+Add a copy of [manage.py](https://github.com/jedie/manage_django_project/blob/main/manage.py) file to your project source root.
+
+Change only `manage_django_project_example` in this line:
+```python
+PROJECT_SHELL_SCRIPT = BIN_PATH / 'manage_django_project_example'
+```
 
 
 ## Start hacking
 
 Just clone the project and start `./manage.py` to bootstrap a virtual environment:
 
-```
-# Install base requirements for bootstraping:
+```bash
+# Install base requirements:
 ~$ sudo apt install python3-pip python3-venv
 
 # Get the sources:
 ~$ git clone https://github.com/jedie/manage_django_project.git
 ~$ cd manage_django_project/
 
-# Just call manage.py:
-~/manage_django_project$ ./manage.py --help
-...
-[manage_django_project]
-    code_style
-    coverage
-    install
-    project_info
-    run_dev_server
-    safety
-    tox
-    update_req
-...
+# Just call manage.py and the magic happen:
+~/manage_django_project$ ./manage.py
 
 # start local dev. web server:
 ~/django-for-runners$ ./manage.py run_dev_server
@@ -54,8 +140,12 @@ Just clone the project and start `./manage.py` to bootstrap a virtual environmen
 
 ## history
 
-* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.2.0...main)
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.2.1...main)
   * TBC
+* [v0.2.1 - 16.03.2023](https://github.com/jedie/manage_django_project/compare/v0.2.0...v0.2.1)
+  * Add more tests
+  * Enhance README
+  * Code cleanup
 * [v0.2.0 - 14.03.2023](https://github.com/jedie/manage_django_project/compare/v0.1.1...v0.2.0)
   * Add a optional shell via cmd2
 * [v0.1.1 - 13.03.2023](https://github.com/jedie/manage_django_project/compare/v0.1.0...v0.1.1)
