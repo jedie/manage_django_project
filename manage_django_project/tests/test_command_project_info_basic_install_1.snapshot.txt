@@ -5,9 +5,9 @@ manage_config = ProjectInfo(
         module=<module 'manage_django_project_example' from 
 '.../manage_django_project/manage_django_project_example/__init__.py'>,
         project_root_path=PosixPath('.../manage_django_project'),
-        prod_settings='manage_django_project_example.settings.prod',
         local_settings='manage_django_project_example.settings.local',
-        test_settings='manage_django_project_example.settings.tests'
+        test_settings='manage_django_project_example.settings.tests',
+        local_settings_commands=('test', 'coverage', 'tox')
     ),
     pyproject_toml_path=PosixPath('.../manage_django_project/pyproject.toml'),
     distribution_name='manage_django_project',
