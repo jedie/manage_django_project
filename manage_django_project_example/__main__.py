@@ -17,9 +17,14 @@ def main():
     execute_django_from_command_line(
         config=ManageConfig(
             module=manage_django_project_example,
+            #
+            # Path that contains your `pyproject.toml`:
             project_root_path=Path(manage_django_project_example.__file__).parent.parent,
-            prod_settings='manage_django_project_example.settings.prod',
+            #
+            # Django settings used for all commands except test/coverage/tox:
             local_settings='manage_django_project_example.settings.local',
+            #
+            # Django settings used for test/coverage/tox commands:
             test_settings='manage_django_project_example.settings.tests',
         )
     )
