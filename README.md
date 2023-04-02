@@ -140,8 +140,10 @@ Just clone the project and start `./manage.py` to bootstrap a virtual environmen
 
 ## history
 
-* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.2.1...main)
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.2.2...main)
   * TBC
+* [v0.2.2 - 02.04.2023](https://github.com/jedie/manage_django_project/compare/v0.2.1...v0.2.2)
+  * Ignore non `django.core.management.base.BaseCommand` based commands.
 * [v0.2.1 - 16.03.2023](https://github.com/jedie/manage_django_project/compare/v0.2.0...v0.2.1)
   * Add more tests
   * Enhance README

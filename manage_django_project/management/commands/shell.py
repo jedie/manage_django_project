@@ -65,10 +65,6 @@ class ManageDjangoProjectApp(cmd2.Cmd):
             if command_name == 'shell':
                 continue
 
-            cmd = DjangoCommand(command_name=command_name, package_name=app_name, console=self.console)
-
-            categorize(func=cmd, category=app_name)
-
             pkg_name = f'{app_name}.management.commands.{command_name}'
             try:
                 module = import_module(pkg_name)
@@ -78,8 +74,17 @@ class ManageDjangoProjectApp(cmd2.Cmd):
                 print(f'[red]{msg}')
                 continue
 
-            CommandClass = module.Command
-            assert issubclass(CommandClass, BaseCommand)
+            try:
+                CommandClass = module.Command
+            except AttributeError as err:
+                logger.info('Skip %s because of: %s', pkg_name, err)
+                continue
+
+            try:
+                assert issubclass(CommandClass, BaseCommand)
+            except AssertionError as err:
+                logger.info('Skip %s because of: %s', pkg_name, err)
+                continue
 
             try:
                 cmd_instance: BaseCommand = CommandClass()
@@ -88,6 +93,10 @@ class ManageDjangoProjectApp(cmd2.Cmd):
                 logger.exception(msg)
                 print(f'[red]{msg}')
                 continue
+
+            cmd = DjangoCommand(command_name=command_name, package_name=app_name, console=self.console)
+
+            categorize(func=cmd, category=app_name)
 
             parser: CommandParser = cmd_instance.create_parser(prog_name='manage.py', subcommand=command_name)
 
