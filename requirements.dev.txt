@@ -339,7 +339,7 @@ cryptography==40.0.1 \
     --hash=sha256:d8aa3609d337ad85e4eb9bb0f8bcf6e4409bfb86e706efa9a027912169e89122 \
     --hash=sha256:f5d7b79fa56bc29580faafc2ff736ce05ba31feaa9d4735048b0de7d9ceb2b94
     # via secretstorage
-darker==1.7.1 \
+darker[color,flynt,isort]==1.7.1 \
     --hash=sha256:cf4173be4ad2982e5b2ebab7e08bd0d27173f2459ec1b1cf66aec9290da80cce \
     --hash=sha256:d72126418194871aeaf1e8aa620ad06edc5472848bef71c4d393c22b65571878
     # via
@@ -389,11 +389,11 @@ flake8==6.0.0 \
     # via
     #   manage-django-project (pyproject.toml)
     #   manageprojects
-flynt==0.78 \
-    --hash=sha256:15082167a538ea56b6ce4ca6874c22c739710759832dda78d8f43b6079b7e646 \
-    --hash=sha256:3a4cf278518f7dec3af52c94b5e7c395f623186503a684b2ba28705522871e74
+flynt==0.77 \
+    --hash=sha256:2863ac8ec19d6ec8d29e760546e6ced644baf6dff3c7cdc77e03abbd29b80f14 \
+    --hash=sha256:2bd1b37043ad88a3f3c3c34a76fc0b64d24e5f03d36ea6b48cb69cc642bff17e
     # via
-    #   manage-django-project (pyproject.toml)
+    #   darker
     #   manageprojects
 icdiff==2.0.6 \
     --hash=sha256:a2673b335d671e64fc73c44e1eaa0aa01fd0e68354e58ee17e863ab29912a79a
@@ -412,7 +412,7 @@ isort==5.12.0 \
     --hash=sha256:8bef7dde241278824a6d83f44a544709b065191b95b6e50894bdc722fcba0504 \
     --hash=sha256:f84c2818376e66cf843d497486ea8fed8700b340f308f076c6fb1229dff318b6
     # via
-    #   manage-django-project (pyproject.toml)
+    #   darker
     #   manageprojects
 jaraco-classes==3.2.3 \
     --hash=sha256:2353de3288bc6b82120752201c6b1c1a14b058267fa424ed5ce5984e3b922158 \
@@ -605,6 +605,7 @@ pygments==2.14.0 \
     --hash=sha256:b3ed06a9e8ac9a9aae5a6f5dbe78a8a58655d17b43b93c078f094ddc476ae297 \
     --hash=sha256:fa7bd7bd2771287c0de303af8bfdfc731f51bd2c6a47ab69d117138893b82717
     # via
+    #   darker
     #   readme-renderer
     #   rich
 pyperclip==1.8.2 \

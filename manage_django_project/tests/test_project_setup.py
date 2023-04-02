@@ -5,6 +5,7 @@ from django.test import SimpleTestCase
 from manageprojects.test_utils.project_setup import check_editor_config
 from packaging.version import Version
 
+from manage_django_project import __version__
 from manage_django_project.config import project_info
 from manage_django_project.management.commands import code_style
 
@@ -21,10 +22,9 @@ class ProjectSettingsTestCase(SimpleTestCase):
 
         self.assertEqual(project_info.module_version, Version(project_info.config.module.__version__))
 
-        pyproject_toml = project_info.get_pyproject_toml()
-        pyproject_version = pyproject_toml['project']['version']
-
-        self.assertEqual(project_info.config.module.__version__, pyproject_version)
+        self.assertIsNotNone(__version__)
+        version = Version(__version__)
+        self.assertEqual(project_info.module_version, version)
 
     def test_check_editor_config(self):
         check_editor_config(package_root=project_info.config.project_root_path)

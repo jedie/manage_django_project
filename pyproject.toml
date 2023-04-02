@@ -1,6 +1,6 @@
 [project]
 name = "manage_django_project"
-version = "0.2.1"
+dynamic = ["version"]
 description = "Helper to develop Django projects."
 readme = "README.md"
 authors = [
@@ -21,11 +21,8 @@ dev = [
     "tblib",   # https://github.com/ionelmc/python-tblib
     "tox",  # https://github.com/tox-dev/tox
     "coverage",  # https://github.com/nedbat/coveragepy
-    "darker>=1.7",  # https://github.com/akaihola/darker
     "autopep8",  # https://github.com/hhatto/autopep8
     "pyupgrade",  # https://github.com/asottile/pyupgrade
-    "isort",  # https://github.com/pycqa/isort
-    "flynt",  # https://github.com/ikamensh/flynt
     "flake8",  # https://github.com/pycqa/flake8
     "pyflakes",  # https://github.com/PyCQA/pyflakes
     "codespell",  # https://github.com/codespell-project/codespell
@@ -33,6 +30,12 @@ dev = [
     "safety",  # https://github.com/pyupio/safety
     "mypy",  # https://github.com/python/mypy
     "twine",  # https://github.com/pypa/twine
+
+    # https://github.com/akaihola/darker
+    # https://github.com/ikamensh/flynt
+    # https://github.com/pycqa/isort
+    # https://github.com/pygments/pygments
+    "darker[flynt, isort, color]",
 
     "tomli",  # https://github.com/hukkin/tomli
     # tomli only needed for Python <3.11, but see bug:
@@ -52,13 +55,17 @@ Source = "https://github.com/jedie/manage_django_project"
 # Must be set in ./manage.py and PROJECT_SHELL_SCRIPT:
 manage_django_project_example = "manage_django_project_example.__main__:main"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["manage_django_project*"]
 
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["manage_django_project*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "manage_django_project.__version__"}
 
 
 [tool.darker]
@@ -119,11 +126,14 @@ skip_missing_interpreters = True
 [testenv]
 passenv = *
 skip_install = true
-deps = pip-tools
 commands_pre =
+    pip install -U pip-tools
     pip-sync requirements.dev.txt
 commands =
-    {envpython} -m manage_django_project_example coverage --no-processing --context='{envname}'
+    {envpython} -m coverage run --context='{envname}'
+    {envpython} -m coverage combine --append
+    {envpython} -m coverage xml
+    {envpython} -m coverage report
 """
 
 
@@ -153,3 +163,6 @@ package_url = "https://github.com/jedie/manage_django_project"
 issues_url = "https://github.com/jedie/manage_django_project/issues"
 license = "GPL-3.0-or-later"
 _template = "https://github.com/jedie/cookiecutter_templates/"
+applied_migrations = [
+    "2281f4b", # 2023-04-02T17:40:58+02:00
+]
