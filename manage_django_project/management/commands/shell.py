@@ -77,13 +77,13 @@ class ManageDjangoProjectApp(cmd2.Cmd):
             try:
                 CommandClass = module.Command
             except AttributeError as err:
-                logger.info(f'Skip %s because of: %s', pkg_name, err)
+                logger.info('Skip %s because of: %s', pkg_name, err)
                 continue
 
             try:
                 assert issubclass(CommandClass, BaseCommand)
             except AssertionError as err:
-                logger.info(f'Skip %s because of: %s', pkg_name, err)
+                logger.info('Skip %s because of: %s', pkg_name, err)
                 continue
 
             try:
