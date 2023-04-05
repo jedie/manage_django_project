@@ -1,5 +1,6 @@
 import os
 import sys
+import warnings
 
 from manageprojects.utilities.version_info import print_version
 from rich import print
@@ -7,7 +8,13 @@ from rich import print
 from manage_django_project.config import ManageConfig, project_info
 
 
-def execute_django_from_command_line(*, config: ManageConfig, argv=None):
+def execute_django_from_command_line(*, config: ManageConfig = None, argv=None):
+    if config is not None:
+        warnings.warn(
+            'config argument for execute_django_from_command_line() is deprecated and will removed in the future!',
+            DeprecationWarning,
+        )
+
     if argv is None:
         argv = sys.argv
 
@@ -15,7 +22,7 @@ def execute_django_from_command_line(*, config: ManageConfig, argv=None):
         # Go into cmd2 shell if no command are given:
         argv.append('shell')
 
-    project_info.initialize(config=config)
+    project_info.initialize()
 
     print_version(module=project_info.config.module, project_root=project_info.config.project_root_path)
     print()
@@ -44,5 +51,5 @@ def execute_django_from_command_line(*, config: ManageConfig, argv=None):
     except Exception as err:
         from bx_py_utils.error_handling import print_exc_plus
 
-        print_exc_plus(err)
+        print_exc_plus(err, max_chars=400)
         raise

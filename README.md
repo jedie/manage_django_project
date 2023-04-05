@@ -43,8 +43,10 @@ Here a overview and below details:
 * add `manage_django_project` to your dev dependencies
 * You Django project should have separate settings for `prod`, `local` and `tests` (Last two ones are used by `manage_django_project`)
 * Add the bootstrap `manage.py`
-* Add a `__main__.py` with a `ManageConfig` and the `execute_django_from_command_line()` call.
-* Add the `__main__`-file as `[project.scripts]`
+* Add a `__main__.py` with the `execute_django_from_command_line()` call.
+* In your `pyproject.toml`:
+  * Add the `[manage_django_project]` section
+  * Add the `__main__`-file as `[project.scripts]`
 * Add the name of your `[project.scripts]` into bootstrap `manage.py`
 
 All examples below used `manage_django_project_example`. You have to rename this string/path to your Django package name.
@@ -60,10 +62,6 @@ If everything works as expected you can just call the `./manage.py` file and the
 Add a `.../manage_django_project_example/__main__.py` file, looks like:
 
 ```python
-from pathlib import Path
-
-import manage_django_project_example
-from manage_django_project.config import ManageConfig
 from manage_django_project.manage import execute_django_from_command_line
 
 
@@ -72,20 +70,7 @@ def main():
     entrypoint installed via pyproject.toml and [project.scripts] section.
     Must be set in ./manage.py and PROJECT_SHELL_SCRIPT
     """
-    execute_django_from_command_line(
-        config=ManageConfig(
-            module=manage_django_project_example,
-            #
-            # Path that contains your `pyproject.toml`:
-            project_root_path=Path(manage_django_project_example.__file__).parent.parent,
-            #
-            # Django settings used for all commands except test/coverage/tox:
-            local_settings='manage_django_project_example.settings.local',
-            #
-            # Django settings used for test/coverage/tox commands:
-            test_settings='manage_django_project_example.settings.tests',
-        )
-    )
+    execute_django_from_command_line()
 
 
 if __name__ == '__main__':
@@ -98,6 +83,15 @@ if __name__ == '__main__':
 ```toml
 [project.scripts]
 manage_django_project_example = "manage_django_project_example.__main__:main"
+
+[manage_django_project]
+module_name="your_project_example"
+
+# Django settings used for all commands except test/coverage/tox:
+local_settings='your_project.settings.local'
+
+# Django settings used for test/coverage/tox commands:
+test_settings='your_project.settings.tests'
 ```
 
 
@@ -138,10 +132,46 @@ Just clone the project and start `./manage.py` to bootstrap a virtual environmen
 ```
 
 
+## Backwards-incompatible changes
+
+### v0.2.x -> v0.3.x
+
+The config was moved out from `__main__.py` into `pyproject.toml`
+
+You must add in your `pyproject.toml` the following stuff:
+```toml
+[manage_django_project]
+module_name="your_project_example"
+
+# Django settings used for all commands except test/coverage/tox:
+local_settings='your_project.settings.local'
+
+# Django settings used for test/coverage/tox commands:
+test_settings='your_project.settings.tests'
+```
+
+The `config` argument was remove from `execute_django_from_command_line()`, so your `__main__.py` must look like:
+
+```python
+from manage_django_project.manage import execute_django_from_command_line
+
+
+def main():
+    execute_django_from_command_line()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+
 ## history
 
-* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.2.2...main)
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.3.0...main)
   * TBC
+* [v0.3.0 - 05.04.2023](https://github.com/jedie/manage_django_project/compare/v0.2.2...v0.3.0)
+  * Refactor config: Move from `__main__.py` into `pyproject.toml` see backwards-incompatible changes
+  * Small project changes + requirements update
 * [v0.2.2 - 02.04.2023](https://github.com/jedie/manage_django_project/compare/v0.2.1...v0.2.2)
   * Ignore non `django.core.management.base.BaseCommand` based commands.
 * [v0.2.1 - 16.03.2023](https://github.com/jedie/manage_django_project/compare/v0.2.0...v0.2.1)
