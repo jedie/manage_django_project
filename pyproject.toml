@@ -57,7 +57,7 @@ manage_django_project_example = "manage_django_project_example.__main__:main"
 
 
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "setuptools_scm>=7.1"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
@@ -165,4 +165,5 @@ license = "GPL-3.0-or-later"
 _template = "https://github.com/jedie/cookiecutter_templates/"
 applied_migrations = [
     "2281f4b", # 2023-04-02T17:40:58+02:00
+    "10c547a", # 2023-04-04T20:37:52+02:00
 ]
