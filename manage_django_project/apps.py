@@ -8,4 +8,5 @@ class ManageDjangoProjectConfig(AppConfig):
     verbose_name = "Manage Django Project"
 
     def ready(self):
+        project_info.initialize()
         project_info.assert_initialized()

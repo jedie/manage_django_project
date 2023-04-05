@@ -10,5 +10,4 @@ from .base import *  # noqa
 # _____________________________________________________________________________
 # Manage Django Project
 
-INSTALLED_APPS.append('manage_django_project')
-MANAGE_DJANGO_PROJECT_MODULE_NAME = 'manage_django_project_example'
+INSTALLED_APPS.append('manage_django_project.apps.ManageDjangoProjectConfig')

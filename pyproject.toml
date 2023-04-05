@@ -56,6 +56,16 @@ Source = "https://github.com/jedie/manage_django_project"
 manage_django_project_example = "manage_django_project_example.__main__:main"
 
 
+[manage_django_project]
+module_name="manage_django_project_example"
+
+# Django settings used for all commands except test/coverage/tox:
+local_settings='manage_django_project_example.settings.local'
+
+# Django settings used for test/coverage/tox commands:
+test_settings='manage_django_project_example.settings.tests'
+
+
 [build-system]
 requires = ["setuptools>=61.0", "setuptools_scm>=7.1"]
 build-backend = "setuptools.build_meta"
