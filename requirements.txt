@@ -137,6 +137,7 @@ django==4.2 \
     # via
     #   django-rich
     #   django-tools
+    #   manage-django-project (pyproject.toml)
 django-rich==1.5.0 \
     --hash=sha256:62562169c4117a7e930ddea1a402f0b0afcfa9d296bb5a08fe0fc865c1df590f \
     --hash=sha256:cd09c53cf5d9313ef1c06c0ff71297839dc9e239269fa85b4672daf8b6e98a96

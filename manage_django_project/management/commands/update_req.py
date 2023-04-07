@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+from typing import Optional
 
 from bx_py_utils.path import assert_is_file
 from django_rich.management import RichCommand
@@ -20,7 +21,7 @@ class NoPyProjectTomlFound(FileNotFoundError):
     pass
 
 
-def get_pyproject_toml(*, file_path: Path | None = None) -> dict:
+def get_pyproject_toml(*, file_path: Optional[Path] = None) -> dict:
     # TODO: Move to manageprojects
     if not file_path:
         file_path = Path.cwd()
@@ -44,7 +45,7 @@ class Command(RichCommand):
 
         pyproject_config = get_pyproject_toml()
         project_cfg = pyproject_config['project']
-        assert 'dependencies' in project_cfg, f'No "dependencies" in [project] in "pyproject.toml" found!'
+        assert 'dependencies' in project_cfg, 'No "dependencies" in [project] in "pyproject.toml" found!'
 
         bin_path = Path(sys.executable).parent
 
@@ -78,7 +79,7 @@ class Command(RichCommand):
         if opt_deps := pyproject_config['project'].get('optional-dependencies'):
             opt_dep_names = opt_deps.keys()
             if opt_dep_names:
-                assert 'dev' in opt_dep_names, f'No "dev" list in [project.optional-dependencies] found!'
+                assert 'dev' in opt_dep_names, 'No "dev" list in [project.optional-dependencies] found!'
                 for name in opt_dep_names:
                     requirements_name = f'requirements.{name}.txt'
                     verbose_check_call(
