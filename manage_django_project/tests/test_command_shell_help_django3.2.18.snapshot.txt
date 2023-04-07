@@ -1,0 +1,39 @@
+
+Documented commands (use 'help -v' for verbose/'help <topic>' for details):
+
+django.contrib.auth
+===================
+changepassword  createsuperuser
+
+django.contrib.contenttypes
+===========================
+remove_stale_contenttypes
+
+django.contrib.sessions
+=======================
+clearsessions
+
+django.contrib.staticfiles
+==========================
+collectstatic  findstatic  runserver
+
+django.core
+===========
+check             dumpdata      makemigrations  sqlmigrate        test
+compilemessages   flush         migrate         sqlsequencereset  testserver
+createcachetable  inspectdb     sendtestemail   squashmigrations
+dbshell           loaddata      showmigrations  startapp
+diffsettings      makemessages  sqlflush        startproject
+
+manage_django_project
+=====================
+code_style  install       run_dev_server  tox
+coverage    project_info  safety          update_req
+
+manage_django_project_example
+=============================
+publish
+
+Uncategorized
+=============
+alias  help  history  macro  quit  set  shortcuts

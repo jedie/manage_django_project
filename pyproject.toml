@@ -2,12 +2,14 @@
 name = "manage_django_project"
 dynamic = ["version"]
 description = "Helper to develop Django projects."
+license = {text = "GPL-3.0-or-later"}
 readme = "README.md"
 authors = [
     {name = 'Jens Diemer', email = 'git@jensdiemer.de'}
 ]
 requires-python = ">=3.9,<4"
 dependencies = [
+    "django",
     "django-tools",  # https://github.com/jedie/django-tools
     "manageprojects",  # https://github.com/jedie/manageprojects
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
@@ -46,6 +48,9 @@ dev = [
     # https://github.com/jazzband/pip-tools/issues/994#issuecomment-1321226661
     "typing-extensions>=3.10;python_version<\"3.10\"",
 ]
+django32=["django>=3.2,<3.3"]
+django41=["django>=4.1,<4.2"]
+django42=["django>=4.2,<4.3"]
 
 [project.urls]
 Documentation = "https://github.com/jedie/manage_django_project"
@@ -130,7 +135,7 @@ exclude_lines = [
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py{311,310,39}
+envlist = py{311,310,39}-django{42,41,32}
 skip_missing_interpreters = True
 
 [testenv]
@@ -138,12 +143,13 @@ passenv = *
 skip_install = true
 commands_pre =
     pip install -U pip-tools
-    pip-sync requirements.dev.txt
+    django32: pip-sync requirements.django32.txt
+    django41: pip-sync requirements.django41.txt
+    django42: pip-sync requirements.django42.txt
 commands =
-    {envpython} -m coverage run --context='{envname}'
-    {envpython} -m coverage combine --append --keep
-    {envpython} -m coverage xml
-    {envpython} -m coverage report
+    django32: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer
+    django41: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer --shuffle --parallel
+    django42: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer --shuffle --parallel
 """
 
 
