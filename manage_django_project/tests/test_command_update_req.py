@@ -1,5 +1,8 @@
+import inspect
+import re
 from unittest.mock import patch
 
+from bx_py_utils.test_utils.redirect import RedirectOut
 from django.test import SimpleTestCase
 
 from manage_django_project.management.commands import shell, update_req
@@ -20,7 +23,8 @@ class UpdateReqTestCase(SimpleTestCase):
     maxDiff = None
 
     def test_basic_update_req(self):
-        popenargs = call_command_capture_subprocess(cmd_module=update_req)
+        with RedirectOut() as buffer:
+            popenargs = call_command_capture_subprocess(cmd_module=update_req)
         self.assertEqual(
             popenargs,
             [
@@ -86,4 +90,23 @@ class UpdateReqTestCase(SimpleTestCase):
                 ],
                 ['.../bin/pip-sync', 'requirements.django42.txt'],
             ],
+        )
+        self.assertEqual(buffer.stderr, '')
+
+        blocks = re.split(r'-{10,}', buffer.stdout)
+        last_block = blocks[-1]
+        self.assertEqual(
+            last_block.strip(),
+            inspect.cleandoc(
+                '''
+                Generate requirement files:
+                 * requirements.txt
+                 * requirements.dev.txt
+                 * requirements.django32.txt
+                 * requirements.django41.txt
+                 * requirements.django42.txt
+
+                Install requirement from: requirements.django42.txt
+                '''
+            ).strip(),
         )

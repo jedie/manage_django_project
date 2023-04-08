@@ -163,9 +163,9 @@ jinja2-time==0.2.0 \
     --hash=sha256:d14eaa4d315e7688daa4969f616f226614350c48730bfa1692d2caebd8c90d40 \
     --hash=sha256:d3eab6605e3ec8b7a0863df09cc1d23714908fa61aa6986a845c20ba488b4efa
     # via cookiecutter
-manageprojects==0.9.9 \
-    --hash=sha256:41a26119df5d03f57c83f04b30e8f6908025e6e59a7e79b2777393fa33f44481 \
-    --hash=sha256:dc809f6d0b07bcd2697a28ef133961e01cba98483d111b356abbb03334e328a6
+manageprojects==0.9.10 \
+    --hash=sha256:5f6aac8e660cc8bc72548afbc300be8d3096f4afd715e1549a4bebedba105c75 \
+    --hash=sha256:be59603525d1f27519bd65717d5dcfe4d81eb75c34df71bb86a3fc4fbe15f0b5
     # via manage-django-project (pyproject.toml)
 markdown-it-py==2.2.0 \
     --hash=sha256:5a35f8d1870171d9acc47b99612dc146129b631baf04970128b568f190d0cc30 \
