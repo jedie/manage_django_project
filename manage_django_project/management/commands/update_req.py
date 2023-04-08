@@ -1,39 +1,9 @@
 import sys
 from pathlib import Path
-from typing import Optional
 
-from bx_py_utils.path import assert_is_file
 from django_rich.management import RichCommand
-from manageprojects.utilities.pyproject_toml import find_pyproject_toml
+from manageprojects.utilities.pyproject_toml import TomlDocument, get_pyproject_toml
 from manageprojects.utilities.subprocess_utils import verbose_check_call
-
-
-try:
-    import tomllib  # New in Python 3.11
-except ImportError:
-    try:
-        import tomli as tomllib
-    except ImportError as err:
-        raise ImportError(f'Please add "tomli" to your dev-dependencies! Origin error: {err}')
-
-
-class NoPyProjectTomlFound(FileNotFoundError):
-    pass
-
-
-def get_pyproject_toml(*, file_path: Optional[Path] = None) -> dict:
-    # TODO: Move to manageprojects
-    if not file_path:
-        file_path = Path.cwd()
-    pyproject_toml_path = find_pyproject_toml(file_path=file_path)
-    if not pyproject_toml_path:
-        raise NoPyProjectTomlFound(f'Can not find "pyproject.toml" in {file_path}')
-
-    assert_is_file(pyproject_toml_path)
-
-    pyproject_text = pyproject_toml_path.read_text(encoding="utf-8")
-    pyproject_config = tomllib.loads(pyproject_text)
-    return pyproject_config
 
 
 class Command(RichCommand):
@@ -43,7 +13,11 @@ class Command(RichCommand):
         self.console.print(f'\n[bold]{self.help}')
         verbose = options['verbosity'] > 1
 
-        pyproject_config = get_pyproject_toml()
+        toml_document: TomlDocument = get_pyproject_toml()
+        self.console.print(f'Use: {toml_document.file_path}')
+
+        pyproject_config = toml_document.doc.unwrap()  # TOMLDocument -> dict
+
         project_cfg = pyproject_config['project']
         assert 'dependencies' in project_cfg, 'No "dependencies" in [project] in "pyproject.toml" found!'
 
@@ -74,6 +48,7 @@ class Command(RichCommand):
             'requirements.txt',
             extra_env=extra_env,
         )
+        requirements_names = ['requirements.txt']
         last_requirements_name = 'requirements.txt'
 
         if opt_deps := pyproject_config['project'].get('optional-dependencies'):
@@ -92,6 +67,15 @@ class Command(RichCommand):
                         extra_env=extra_env,
                     )
                     last_requirements_name = requirements_name
+                    requirements_names.append(requirements_name)
 
         # Install new dependencies in current .venv:
         verbose_check_call('pip-sync', last_requirements_name)
+
+        self.console.print('\n')
+        self.console.print('-' * 100)
+        self.console.print('[green]Generate requirement files:')
+        for requirements_name in requirements_names:
+            self.console.print(f'[bold] * [cyan]{requirements_name}')
+
+        self.console.print(f'\n[green]Install requirement from: [bold]{last_requirements_name}\n')
