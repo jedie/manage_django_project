@@ -14,4 +14,8 @@ class ManageDjangoShellTestCase(BaseShellTestCase):
         self.assertIn('makemigrations', stdout)
         self.assertIn('manage_django_project', stdout)
         self.assertIn('run_dev_server', stdout)
-        assert_text_snapshot(got=stdout, snapshot_name=f'test_command_shell_help_django{django.__version__}')
+
+        assert_text_snapshot(
+            got=stdout,
+            snapshot_name=f'test_command_shell_help_django{".".join(str(x) for x in django.VERSION[:2])}',
+        )
