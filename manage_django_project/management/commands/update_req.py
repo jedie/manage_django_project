@@ -1,9 +1,9 @@
 import sys
 from pathlib import Path
 
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from django_rich.management import RichCommand
 from manageprojects.utilities.pyproject_toml import TomlDocument, get_pyproject_toml
-from manageprojects.utilities.subprocess_utils import verbose_check_call
 
 
 class Command(RichCommand):

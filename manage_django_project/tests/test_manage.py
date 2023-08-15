@@ -2,7 +2,7 @@ import shutil
 from unittest import TestCase
 
 from bx_py_utils.path import assert_is_file
-from manageprojects.utilities.subprocess_utils import verbose_check_output
+from cli_base.cli_tools.subprocess_utils import verbose_check_output
 
 from manage_django_project import __version__
 from manage_django_project.tests import PROJECT_ROOT

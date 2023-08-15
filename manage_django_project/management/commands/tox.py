@@ -1,6 +1,6 @@
 import sys
 
-from manageprojects.utilities.subprocess_utils import verbose_check_call
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
 
 from manage_django_project.management.base import BasePassManageCommand
 from manage_django_project.management.commands.coverage import coverage_combine_report
