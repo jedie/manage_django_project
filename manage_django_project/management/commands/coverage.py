@@ -1,4 +1,4 @@
-from manageprojects.utilities.subprocess_utils import verbose_check_call
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
 
 from manage_django_project.config import project_info
 from manage_django_project.management.base import BaseManageCommand

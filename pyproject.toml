@@ -11,13 +11,14 @@ requires-python = ">=3.9,<4"
 dependencies = [
     "django",
     "django-tools",  # https://github.com/jedie/django-tools
-    "manageprojects>=0.9.10",  # https://github.com/jedie/manageprojects
+    "cli-base-utilities",  # https://github.com/jedie/cli-base-utilities
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "django-rich",  # https://github.com/adamchainz/django-rich
     "cmd2",  # https://github.com/python-cmd2/cmd2
 ]
 [project.optional-dependencies]
 dev = [
+    "manageprojects",  # https://github.com/jedie/manageprojects
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "pip-tools",  # https://github.com/jazzband/pip-tools/
     "tblib",   # https://github.com/ionelmc/python-tblib

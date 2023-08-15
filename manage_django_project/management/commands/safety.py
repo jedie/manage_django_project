@@ -1,5 +1,5 @@
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from django_rich.management import RichCommand
-from manageprojects.utilities.subprocess_utils import verbose_check_call
 
 
 class Command(RichCommand):

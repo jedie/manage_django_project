@@ -4,11 +4,11 @@ import sys
 from importlib import import_module
 
 import cmd2
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from cmd2 import Statement, categorize
 from cmd2.constants import CMD_ATTR_ARGPARSER, CMD_ATTR_PRESERVE_QUOTES
 from cmd2.decorators import _set_parser_prog
 from django.core.management import BaseCommand, CommandParser, get_commands
-from manageprojects.utilities.subprocess_utils import verbose_check_call
 from rich import get_console, print
 from rich.console import Console
 

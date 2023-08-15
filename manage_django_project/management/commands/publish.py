@@ -1,5 +1,5 @@
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from manageprojects.utilities.publish import publish_package
-from manageprojects.utilities.subprocess_utils import verbose_check_call
 from rich.pretty import pprint
 
 from manage_django_project.config import project_info
