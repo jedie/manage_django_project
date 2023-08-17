@@ -9,6 +9,13 @@ __pycache__
 !.editorconfig
 !.flake8
 !.gitignore
+!.gitkeep
 
-# from example project:
-db.sqlite3
+# from test projects:
+/static/
+/media/
+*.sqlite3
+*.json
+
+# Django
+secret.txt
