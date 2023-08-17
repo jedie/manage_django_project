@@ -12,6 +12,7 @@ dependencies = [
     "django",
     "django-tools",  # https://github.com/jedie/django-tools
     "cli-base-utilities>=0.3.0",  # https://github.com/jedie/cli-base-utilities
+    "manageprojects>=0.15.0",  # https://github.com/jedie/manageprojects
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "django-rich",  # https://github.com/adamchainz/django-rich
     "cmd2",  # https://github.com/python-cmd2/cmd2
@@ -19,7 +20,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
-    "manageprojects>=0.15.0",  # https://github.com/jedie/manageprojects
     "pip-tools",  # https://github.com/jazzband/pip-tools/
     "tblib",   # https://github.com/ionelmc/python-tblib
     "tox",  # https://github.com/tox-dev/tox
