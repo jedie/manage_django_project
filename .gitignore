@@ -11,5 +11,11 @@ __pycache__
 !.gitignore
 !.gitkeep
 
-# from example project:
-db.sqlite3
+# from test projects:
+/static/
+/media/
+*.sqlite3
+*.json
+
+# Django
+secret.txt

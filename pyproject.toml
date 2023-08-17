@@ -7,7 +7,7 @@ readme = "README.md"
 authors = [
     {name = 'Jens Diemer', email = 'git@jensdiemer.de'}
 ]
-requires-python = ">=3.9,<4"
+requires-python = ">=3.9,<4" # Keep Python 3.9 until Yunohost contains a newer Python Version ;)
 dependencies = [
     "django",
     "django-tools",  # https://github.com/jedie/django-tools
@@ -75,7 +75,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["manage_django_project*"]
+include = ["manage_django_project*", "manage_django_project_example*"]
 
 [tool.setuptools.dynamic]
 version = {attr = "manage_django_project.__version__"}
@@ -103,7 +103,7 @@ log_level = "INFO"
 # https://pycqa.github.io/isort/docs/configuration/config_files/#pyprojecttoml-preferred-format
 atomic=true
 profile='black'
-skip_glob=['.*', '*/htmlcov/*']
+skip_glob=['.*', '*/htmlcov/*','*/migrations/*']
 known_first_party=['manage_django_project']
 line_length=119
 lines_after_imports=2
@@ -117,7 +117,7 @@ source = ['.']
 command_line = '-m manage_django_project_example test --shuffle --parallel --buffer'
 
 [tool.coverage.report]
-omit = ['.*', '*/tests/*']
+omit = ['.*', '*/tests/*', '*/migrations/*']
 skip_empty = true
 fail_under = 30
 show_missing = true
@@ -157,14 +157,14 @@ ignore_missing_imports = true
 allow_redefinition = true  # https://github.com/python/mypy/issues/7165
 show_error_codes = true
 plugins = []
-exclude = ['.venv', 'tests']
+exclude = ['.venv', 'tests', 'migrations']
 
 
 [manageprojects] # https://github.com/jedie/manageprojects
 initial_revision = "04d5a25"
 initial_date = 2023-03-07T16:25:36+01:00
 cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
-cookiecutter_directory = "piptools-python"
+cookiecutter_directory = "managed-django-project"
 
 [manageprojects.cookiecutter_context.cookiecutter]
 full_name = "Jens Diemer"
