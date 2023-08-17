@@ -2,7 +2,7 @@ import os
 import sys
 import warnings
 
-from manageprojects.utilities.version_info import print_version
+from cli_base.cli_tools.version_info import print_version
 from rich import print
 
 from manage_django_project.config import ManageConfig, project_info
