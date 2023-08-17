@@ -11,15 +11,15 @@ requires-python = ">=3.9,<4"
 dependencies = [
     "django",
     "django-tools",  # https://github.com/jedie/django-tools
-    "cli-base-utilities",  # https://github.com/jedie/cli-base-utilities
+    "cli-base-utilities>=0.3.0",  # https://github.com/jedie/cli-base-utilities
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "django-rich",  # https://github.com/adamchainz/django-rich
     "cmd2",  # https://github.com/python-cmd2/cmd2
 ]
 [project.optional-dependencies]
 dev = [
-    "manageprojects",  # https://github.com/jedie/manageprojects
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
+    "manageprojects>=0.15.0",  # https://github.com/jedie/manageprojects
     "pip-tools",  # https://github.com/jazzband/pip-tools/
     "tblib",   # https://github.com/ionelmc/python-tblib
     "tox",  # https://github.com/tox-dev/tox
@@ -180,4 +180,5 @@ _template = "https://github.com/jedie/cookiecutter_templates/"
 applied_migrations = [
     "2281f4b", # 2023-04-02T17:40:58+02:00
     "10c547a", # 2023-04-04T20:37:52+02:00
+    "be35344", # 2023-08-17T20:41:16+02:00
 ]
