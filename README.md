@@ -30,6 +30,7 @@ Helper to develop Django projects:
 * `shell` - Go into cmd2 shell with all registered Django manage commands
 * `tox` - Run tests via tox
 * `update_req` - Update project requirements via pip-tools
+* `update_test_snapshot_files` - Update all snapshot files (by remove and recreate all snapshot files)
 
 [comment]: <> (✂✂✂ auto generated command_info end ✂✂✂)
 

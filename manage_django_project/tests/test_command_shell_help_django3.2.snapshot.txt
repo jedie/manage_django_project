@@ -27,8 +27,9 @@ diffsettings      makemessages  sqlflush        startproject
 
 manage_django_project
 =====================
-code_style  install       run_dev_server  tox
-coverage    project_info  safety          update_req
+code_style  project_info    tox
+coverage    run_dev_server  update_req
+install     safety          update_test_snapshot_files
 
 manage_django_project_example
 =============================
