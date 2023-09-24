@@ -1,15 +1,16 @@
 from unittest.mock import patch
 
+from bx_py_utils.environ import OverrideEnviron
 from django.test import SimpleTestCase
 from manageprojects.test_utils.subprocess import SubprocessCallMock
 
 from manage_django_project.management.commands import shell, update_test_snapshot_files
 from manage_django_project.tests.cmd2_test_utils import BaseShellTestCase
-from manage_django_project.tests.command_test_utils import get_rstrip_paths
+from manage_django_project.tests.command_test_utils import EraseCoverageDataMixin, get_rstrip_paths
 
 
 class ShellTestCase(BaseShellTestCase):
-    def test_basic_tox(self):
+    def test_update_test_snapshot_files(self):
         with patch.object(shell, 'verbose_check_call') as call_mock:
             stdout, stderr = self.execute(command='update_test_snapshot_files')
         self.assertEqual(stderr, '')
@@ -17,10 +18,10 @@ class ShellTestCase(BaseShellTestCase):
         call_mock.assert_called_once()
 
 
-class CallTestCase(SimpleTestCase):
+class CallTestCase(EraseCoverageDataMixin, SimpleTestCase):
     maxDiff = None
 
-    def test_basic_tox(self):
+    def test_update_test_snapshot_files(self):
         command = update_test_snapshot_files.Command()
 
         class ProjectInfoMock:
@@ -41,6 +42,8 @@ class CallTestCase(SimpleTestCase):
         project_info_mock = ProjectInfoMock()
         with SubprocessCallMock() as call_mock, patch(
             'manage_django_project.management.commands.update_test_snapshot_files.project_info', project_info_mock
+        ), OverrideEnviron(
+            TOX_ENV_NAME='foobar',  # env variable used to "detect" tox run
         ):
             try:
                 command.run_from_argv(argv=[])
@@ -55,7 +58,6 @@ class CallTestCase(SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
-                ['.../bin/coverage', 'erase'],
                 ['.../bin/python', '-m', 'tox'],
                 ['.../bin/coverage', 'combine', '--append'],
                 ['.../bin/coverage', 'report'],

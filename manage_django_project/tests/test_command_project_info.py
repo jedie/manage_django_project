@@ -1,6 +1,7 @@
 from unittest.mock import patch
 
 from bx_py_utils.test_utils.snapshot import assert_text_snapshot
+from cli_base.cli_tools.test_utils.rich_test_utils import NoColorEnvRichClick
 from django.test import SimpleTestCase
 from django_tools.unittest_utils.call_management_commands import captured_call_command
 
@@ -8,7 +9,6 @@ from manage_django_project import __version__
 from manage_django_project.management.commands import project_info, shell
 from manage_django_project.tests import PROJECT_ROOT
 from manage_django_project.tests.cmd2_test_utils import BaseShellTestCase
-from manage_django_project.tests.command_test_utils import ForceRichTerminalWidth
 
 
 class ProjectInfoShellTestCase(BaseShellTestCase):
@@ -23,8 +23,8 @@ class ProjectInfoShellTestCase(BaseShellTestCase):
 class InstallTestCase(SimpleTestCase):
     maxDiff = None
 
-    def test_basic_install(self):
-        with ForceRichTerminalWidth(width=120):
+    def test_project_info(self):
+        with NoColorEnvRichClick(width=120):
             output, stderr = captured_call_command(project_info)
         self.assertEqual(stderr, '')
         self.assertIn('manage_config = ProjectInfo(', output)
