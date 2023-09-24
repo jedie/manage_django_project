@@ -9,7 +9,7 @@ from manage_django_project.tests.command_test_utils import get_rstrip_paths
 
 
 class ShellTestCase(BaseShellTestCase):
-    def test_basic_tox(self):
+    def test_happypath(self):
         with patch.object(shell, 'verbose_check_call') as call_mock:
             stdout, stderr = self.execute(command='update_test_snapshot_files')
         self.assertEqual(stderr, '')
@@ -20,7 +20,7 @@ class ShellTestCase(BaseShellTestCase):
 class CallTestCase(SimpleTestCase):
     maxDiff = None
 
-    def test_basic_tox(self):
+    def test_happypath(self):
         command = update_test_snapshot_files.Command()
 
         class ProjectInfoMock:

@@ -23,6 +23,7 @@ Helper to develop Django projects:
 * `code_style` - Check/Fix project code style
 * `coverage` - Run tests with coverage and report
 * `install` - Just install the project as editable via pip (Useful if version has been changed)
+* `playwright` - Call playwright CLI
 * `project_info` - Information about the current Django project
 * `publish` - Build a new release and publish it to PyPi
 * `run_dev_server` - Setup test project and run django developer server
