@@ -3,7 +3,7 @@ import sys
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
 
 from manage_django_project.management.base import BasePassManageCommand
-from manage_django_project.management.commands.coverage import coverage_combine_report
+from manage_django_project.management.commands.coverage import coverage_combine_report, erase_coverage_data
 
 
 class Command(BasePassManageCommand):
@@ -11,6 +11,8 @@ class Command(BasePassManageCommand):
 
     def run_from_argv(self, argv):
         super().run_from_argv(argv)
+
+        erase_coverage_data(verbose=True)
 
         # Just pass every argument to the origin tox CLI:
         verbose_check_call(sys.executable, '-m', 'tox', *argv[2:], exit_on_error=True)
