@@ -168,25 +168,6 @@ if __name__ == '__main__':
 
 ## history
 
-* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.3.0...main)
-  * TBC
-* [v0.3.0 - 05.04.2023](https://github.com/jedie/manage_django_project/compare/v0.2.2...v0.3.0)
-  * Refactor config: Move from `__main__.py` into `pyproject.toml` see backwards-incompatible changes
-  * Small project changes + requirements update
-* [v0.2.2 - 02.04.2023](https://github.com/jedie/manage_django_project/compare/v0.2.1...v0.2.2)
-  * Ignore non `django.core.management.base.BaseCommand` based commands.
-* [v0.2.1 - 16.03.2023](https://github.com/jedie/manage_django_project/compare/v0.2.0...v0.2.1)
-  * Add more tests
-  * Enhance README
-  * Code cleanup
-* [v0.2.0 - 14.03.2023](https://github.com/jedie/manage_django_project/compare/v0.1.1...v0.2.0)
-  * Add a optional shell via cmd2
-* [v0.1.1 - 13.03.2023](https://github.com/jedie/manage_django_project/compare/v0.1.0...v0.1.1)
-  * Add `ProjectInfo.distribution_name` and set if from `pyproject.toml`
-  * publish command: Use `distribution_name` in publish call
-  * publish command: Display used settings for `publish_package()`
-* [v0.1.0 - 12.03.2023](https://github.com/jedie/manage_django_project/compare/v0.0.1...v0.1.0)
-  * publish command: Bugfix test run before publishing: use the "test" settings
-  * coverage command: Remove a existing `.coverage` before create a new one
-* v0.0.1 - 12.03.2023
-  * Init first version
+Release history:
+
+* https://github.com/jedie/manage_django_project/tags
