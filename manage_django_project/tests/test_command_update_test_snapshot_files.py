@@ -50,7 +50,13 @@ class CallTestCase(EraseCoverageDataMixin, SimpleTestCase):
             except SystemExit as err:
                 self.assertEqual(err.code, 0)
 
-        self.assertEqual(project_info_mock.rglob_calls, ['*.snapshot.*'])
+        self.assertEqual(
+            project_info_mock.rglob_calls,
+            [
+                '*.snapshot.*',  # Collect for deleting
+                '*.snapshot.*',  # Collect for info print
+            ],
+        )
         self.assertEqual(project_info_mock.unlink_calls, 1)
 
         # Just normal tox calls:
