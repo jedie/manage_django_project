@@ -12,10 +12,12 @@ class CoverageTestCase(SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
+                ['.../bin/coverage', 'erase'],
                 ['.../bin/coverage', 'run'],
                 ['.../bin/coverage', 'combine', '--append'],
                 ['.../bin/coverage', 'report'],
                 ['.../bin/coverage', 'xml'],
                 ['.../bin/coverage', 'json'],
+                ['.../bin/coverage', 'erase'],
             ],
         )

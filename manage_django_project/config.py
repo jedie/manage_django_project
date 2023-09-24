@@ -28,7 +28,8 @@ class ManageConfig:
     local_settings: str  # ... run local Django dev. server
     test_settings: str  # ... run tests
 
-    local_settings_commands: tuple = ('test', 'coverage', 'tox')
+    # All Django manage commands that should use the "test" settings, instead of "local" settings:
+    test_settings_commands: tuple = ('test', 'coverage', 'tox', 'update_test_snapshot_files')
 
     def __post_init__(self):
         for attr_name in ('local_settings', 'test_settings'):
@@ -132,7 +133,7 @@ class ProjectInfo:
         return read_pyproject_toml(path=self.pyproject_toml_path)
 
     def get_settings_by_command(self, *, command_name) -> str:
-        if command_name in self.config.local_settings_commands:
+        if command_name in self.config.test_settings_commands:
             return self.config.test_settings
 
         return self.config.local_settings
