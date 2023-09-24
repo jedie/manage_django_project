@@ -11,6 +11,7 @@ from cmd2.decorators import _set_parser_prog
 from django.core.management import BaseCommand, CommandParser, get_commands
 from rich import get_console, print
 from rich.console import Console
+from rich.panel import Panel
 
 from manage_django_project.config import project_info
 from manage_django_project.management.base import BasePassManageCommand
@@ -33,8 +34,9 @@ class DjangoCommand:
         verbose = statement.args != '--help'
 
         if verbose:
-            print('_' * self.console.width)
-            print(f'[magenta]call command[/magenta] [cyan]{self.package_name}.[bold]{self.command_name}\n')
+            self.console.print(
+                Panel(f'[magenta]call command[/magenta] [cyan]{self.package_name}.[bold]{self.command_name}')
+            )
 
         # call our manage_django_project.manage.execute_django_from_command_line()
         # and pass all arguments
