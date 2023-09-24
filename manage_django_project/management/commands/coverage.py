@@ -1,33 +1,10 @@
 import os
 
+from cli_base.cli_tools.dev_tools import coverage_combine_report, erase_coverage_data
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
 
 from manage_django_project.config import project_info
 from manage_django_project.management.base import BaseManageCommand
-
-
-class EraseCoverageData:
-    """Erase previously collected coverage data"""
-
-    erased = False
-
-    def __call__(self, verbose):
-        if not self.erased:
-            cwd = project_info.config.project_root_path
-            verbose_check_call('coverage', 'erase', verbose=verbose, exit_on_error=True, cwd=cwd)
-        self.erased = True  # Call only once at runtime!
-
-
-erase_coverage_data = EraseCoverageData()
-
-
-def coverage_combine_report(verbose):
-    cwd = project_info.config.project_root_path
-    verbose_check_call('coverage', 'combine', '--append', verbose=verbose, exit_on_error=True, cwd=cwd)
-    verbose_check_call('coverage', 'report', verbose=verbose, exit_on_error=True, cwd=cwd)
-    verbose_check_call('coverage', 'xml', verbose=verbose, exit_on_error=True, cwd=cwd)
-    verbose_check_call('coverage', 'json', verbose=verbose, exit_on_error=True, cwd=cwd)
-    erase_coverage_data(verbose=True)
 
 
 class Command(BaseManageCommand):
@@ -40,13 +17,13 @@ class Command(BaseManageCommand):
         )
 
     def handle(self, *args, **options):
-        cwd = project_info.config.project_root_path
+        project_root_path = project_info.config.project_root_path
 
         verbose = options['verbosity'] > 0
 
         inside_tox_run = 'TOX_ENV_NAME' in os.environ  # Is this coverage run inside tox call?
 
-        old_coverage_data = cwd / '.coverage'
+        old_coverage_data = project_root_path / '.coverage'
         old_coverage_data.unlink(missing_ok=True)
 
         args = ['coverage', 'run']
@@ -55,12 +32,12 @@ class Command(BaseManageCommand):
             args.append(context)
 
         try:
-            verbose_check_call(*args, verbose=verbose, exit_on_error=True, cwd=cwd)
+            verbose_check_call(*args, verbose=verbose, exit_on_error=True, cwd=project_root_path)
         except SystemExit as err:
             if err.code != 0:
-                erase_coverage_data(verbose=True)
+                erase_coverage_data(cwd=project_root_path, verbose=verbose)
                 raise  # No report if tests fails
 
         if not inside_tox_run:
-            coverage_combine_report(verbose)
-            erase_coverage_data(verbose=True)
+            coverage_combine_report(cwd=project_root_path, verbose=verbose)
+            erase_coverage_data(cwd=project_root_path, verbose=verbose)
