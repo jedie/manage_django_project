@@ -1,4 +1,5 @@
 from django_rich.management import RichCommand
+from rich.panel import Panel
 
 from manage_django_project.config import project_info
 
@@ -14,8 +15,8 @@ class PrintHelpMixin:
 
     def print_help_once(self):
         if not self._help_printed:
-            self.console.print('_' * self.console.width)
-            self.console.print(f'[bold]{self.help}')
+            self.console.print(Panel(f'[bold]{self.help}'))
+
         self._help_printed = True
 
 
