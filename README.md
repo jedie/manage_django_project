@@ -184,6 +184,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.6.3...main)
+  * 2023-11-01 - update requirements
 * [v0.6.3](https://github.com/jedie/manage_django_project/compare/v0.6.2...v0.6.3)
   * 2023-11-01 - Update requirements
   * 2023-11-01 - Autogenerate history in README
@@ -193,6 +195,9 @@ To make a new release, do this:
 * [v0.6.1](https://github.com/jedie/manage_django_project/compare/v0.6.0...v0.6.1)
   * 2023-09-24 - Erase coverage data always after test run
   * 2023-09-24 - Add manage command to interact with Playwright CLI
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.6.0](https://github.com/jedie/manage_django_project/compare/v0.5.2...v0.6.0)
   * 2023-09-24 - Remove outdated history from README
   * 2023-09-24 - Nicer call command info
@@ -263,5 +268,8 @@ To make a new release, do this:
 * [v0.0.1](https://github.com/jedie/manage_django_project/compare/99601ed...v0.0.1)
   * 2023-03-11 - init
   * 2023-03-11 - Initial commit
+
+</details>
+
 
 [comment]: <> (✂✂✂ auto generated history end ✂✂✂)

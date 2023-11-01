@@ -11,7 +11,7 @@ requires-python = ">=3.9,<4" # Keep Python 3.9 until Yunohost contains a newer P
 dependencies = [
     "django",
     "django-tools",  # https://github.com/jedie/django-tools
-    "cli-base-utilities>=0.4.2",  # https://github.com/jedie/cli-base-utilities
+    "cli-base-utilities>=0.4.3",  # https://github.com/jedie/cli-base-utilities
     "manageprojects>=0.15.0",  # https://github.com/jedie/manageprojects
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "django-rich",  # https://github.com/adamchainz/django-rich
