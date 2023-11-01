@@ -229,9 +229,9 @@ charset-normalizer==3.3.2 \
     --hash=sha256:fd1abc0d89e30cc4e02e4064dc67fcc51bd941eb395c502aac3ec19fab46b519 \
     --hash=sha256:ff8fa367d09b717b2a17a052544193ad76cd49979c805768879cb63d9ca50561
     # via requests
-cli-base-utilities==0.4.1 \
-    --hash=sha256:27885efddb86b38624588c991e17e47581c1ad6fdd05efb9ffdaed694d131b50 \
-    --hash=sha256:2abbcc88ca0a888acc8b24c0bbce1bb6324997ab9db4c162e8e597915ec409c0
+cli-base-utilities==0.4.2 \
+    --hash=sha256:05b643761715f3b5ffd9487186c2517160f11ea355926710d7ca3f0778e36124 \
+    --hash=sha256:1e56d6c8dc7c2059e693a7133f1dd5d2334480a529b40b78d76752982a7658f5
     # via
     #   manage-django-project (pyproject.toml)
     #   manageprojects

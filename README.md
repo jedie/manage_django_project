@@ -185,12 +185,9 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.6.3](https://github.com/jedie/manage_django_project/compare/v0.6.2...v0.6.3)
-  * 2023-11-01 - Autogenerate history in README
   * 2023-11-01 - Update requirements
+  * 2023-11-01 - Autogenerate history in README
   * 2023-11-01 - Bugfix subprocess timeout running manage commands
-  * 2023-10-24 - Update requirements
-  * 2023-10-08 - Update requirements
-  * 2023-09-28 - Update requirements
 * [v0.6.2](https://github.com/jedie/manage_django_project/compare/v0.6.1...v0.6.2)
   * 2023-09-24 - Use tools from https://github.com/jedie/cli-base-utilities
 * [v0.6.1](https://github.com/jedie/manage_django_project/compare/v0.6.0...v0.6.1)
@@ -212,7 +209,6 @@ To make a new release, do this:
 * [v0.5.0](https://github.com/jedie/manage_django_project/compare/v0.4.1...v0.5.0)
   * 2023-08-15 - Use https://github.com/jedie/cli-base-utilities
   * 2023-08-04 - Update requirements
-  * 2023-06-11 - Update requirements
 * [v0.4.1](https://github.com/jedie/manage_django_project/compare/v0.4.0...v0.4.1)
   * 2023-04-08 - Use get_pyproject_toml from manageprojects and add summarize output to update_req
 * [v0.4.0](https://github.com/jedie/manage_django_project/compare/v0.3.0...v0.4.0)
@@ -264,5 +260,8 @@ To make a new release, do this:
   * 2023-03-12 - Rename test settings and check the used settings in test
   * 2023-03-12 - Run tests with test settings, before publishing
   * 2023-03-12 - Update README.md
+* [v0.0.1](https://github.com/jedie/manage_django_project/compare/99601ed...v0.0.1)
+  * 2023-03-11 - init
+  * 2023-03-11 - Initial commit
 
 [comment]: <> (✂✂✂ auto generated history end ✂✂✂)
