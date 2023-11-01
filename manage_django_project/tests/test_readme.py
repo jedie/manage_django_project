@@ -3,8 +3,10 @@ from pathlib import Path
 
 from bx_py_utils.auto_doc import assert_readme_block
 from bx_py_utils.path import assert_is_file
+from cli_base.cli_tools.git_history import get_git_history
 from django.test import SimpleTestCase
 
+import manage_django_project
 from manage_django_project.management import commands
 from manage_django_project.tests import PROJECT_ROOT
 
@@ -49,3 +51,16 @@ class ReadmeTestCase(SimpleTestCase):
         help_info = '\n'.join(help_info)
         text_block = f'\n{help_info}\n'
         assert_cli_help_in_readme(text_block=text_block, marker='command_info')
+
+    def test_readme_history(self):
+        git_history = get_git_history(
+            current_version=manage_django_project.__version__,
+            add_author=False,
+        )
+        history = '\n'.join(git_history)
+        assert_readme_block(
+            readme_path=PROJECT_ROOT / 'README.md',
+            text_block=f'\n{history}\n',
+            start_marker_line='[comment]: <> (✂✂✂ auto generated history start ✂✂✂)',
+            end_marker_line='[comment]: <> (✂✂✂ auto generated history end ✂✂✂)',
+        )
