@@ -47,7 +47,12 @@ class DjangoCommand:
         # Don't force any settings:
         env = {k: v for k, v in os.environ.items() if k != 'DJANGO_SETTINGS_MODULE'}
 
-        verbose_check_call(*args, verbose=verbose, env=env)
+        verbose_check_call(
+            *args,
+            verbose=verbose,
+            env=env,
+            timeout=None,  # No default timeout -> run forever
+        )
 
 
 class ManageDjangoProjectApp(cmd2.Cmd):
