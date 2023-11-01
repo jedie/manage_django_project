@@ -167,8 +167,102 @@ if __name__ == '__main__':
 ```
 
 
+## Make new release
+
+We use [cli-base-utilities](https://github.com/jedie/cli-base-utilities#generate-project-history-base-on-git-commitstags) to generate the history in this README.
+
+
+To make a new release, do this:
+
+* Increase your project version number
+* Run tests to update the README
+* commit the changes
+* Create release
+
+
 ## history
 
-Release history:
+[comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* https://github.com/jedie/manage_django_project/tags
+* [v0.6.3](https://github.com/jedie/manage_django_project/compare/v0.6.2...v0.6.3)
+  * 2023-11-01 - Autogenerate history in README
+  * 2023-11-01 - Update requirements
+  * 2023-11-01 - Bugfix subprocess timeout running manage commands
+  * 2023-10-24 - Update requirements
+  * 2023-10-08 - Update requirements
+  * 2023-09-28 - Update requirements
+* [v0.6.2](https://github.com/jedie/manage_django_project/compare/v0.6.1...v0.6.2)
+  * 2023-09-24 - Use tools from https://github.com/jedie/cli-base-utilities
+* [v0.6.1](https://github.com/jedie/manage_django_project/compare/v0.6.0...v0.6.1)
+  * 2023-09-24 - Erase coverage data always after test run
+  * 2023-09-24 - Add manage command to interact with Playwright CLI
+* [v0.6.0](https://github.com/jedie/manage_django_project/compare/v0.5.2...v0.6.0)
+  * 2023-09-24 - Remove outdated history from README
+  * 2023-09-24 - Nicer call command info
+  * 2023-09-24 - NEW command: update_test_snapshot_files
+  * 2023-09-24 - Auto erase coverage data
+  * 2023-09-24 - Update requirements
+* [v0.5.2](https://github.com/jedie/manage_django_project/compare/v0.5.1...v0.5.2)
+  * 2023-08-17 - Bugfix: manageprojects must be a normal dependencies
+* [v0.5.1](https://github.com/jedie/manage_django_project/compare/v0.5.0...v0.5.1)
+  * 2023-08-17 - Use print_version from cli_base
+  * 2023-08-17 - Update requirements
+  * 2023-08-17 - cookiecutter_directory = "managed-django-project"
+  * 2023-08-17 - apply template updates
+* [v0.5.0](https://github.com/jedie/manage_django_project/compare/v0.4.1...v0.5.0)
+  * 2023-08-15 - Use https://github.com/jedie/cli-base-utilities
+  * 2023-08-04 - Update requirements
+  * 2023-06-11 - Update requirements
+* [v0.4.1](https://github.com/jedie/manage_django_project/compare/v0.4.0...v0.4.1)
+  * 2023-04-08 - Use get_pyproject_toml from manageprojects and add summarize output to update_req
+* [v0.4.0](https://github.com/jedie/manage_django_project/compare/v0.3.0...v0.4.0)
+  * 2023-04-07 - tests against different Django versions
+  * 2023-04-07 - Enhance "update_req" command
+* [v0.3.0](https://github.com/jedie/manage_django_project/compare/v0.2.2...v0.3.0)
+  * 2023-04-05 - Move from `__main__.py` into `pyproject.toml`
+  * 2023-04-05 - Bugfix tox run
+  * 2023-04-05 - Update manage.py
+  * 2023-04-05 - Delete README.md
+  * 2023-04-05 - Small project updates
+* [v0.2.2](https://github.com/jedie/manage_django_project/compare/v0.2.1...v0.2.2)
+  * 2023-04-02 - fix code style
+  * 2023-04-02 - apply manage projects update
+  * 2023-04-02 - Ignore non `django.core.management.base.BaseCommand` based commands
+  * 2023-04-02 - Update requirements
+* [v0.2.1](https://github.com/jedie/manage_django_project/compare/v0.2.0...v0.2.1)
+  * 2023-03-16 - fix test
+  * 2023-03-16 - Add "Included Django management commands" to README
+  * 2023-03-16 - typo
+  * 2023-03-16 - Set v0.2.1
+  * 2023-03-16 - Enhance docs
+  * 2023-03-16 - Remove `prod_settings` and add `local_settings_commands` to `ManageConfig`
+  * 2023-03-16 - Add test for bootstrap manage.py calls
+  * 2023-03-16 - fix coverage by activating --concurrency=multiprocessing
+  * 2023-03-15 - fix CI
+  * 2023-03-15 - "tox" command: exit "normal" on failed run
+  * 2023-03-15 - Add tests for "safety" command
+  * 2023-03-15 - Test "tox" command
+  * 2023-03-15 - Add test for "run_dev_server" command
+  * 2023-03-15 - test "project_info" command
+  * 2023-03-15 - Test command "install"
+  * 2023-03-15 - Test command "code_sytle"
+  * 2023-03-15 - Code cleanup: Remove unused files
+  * 2023-03-14 - +Test coverage
+  * 2023-03-14 - Test "update_req"
+  * 2023-03-14 - Add basic test for "update_req"
+  * 2023-03-14 - Add DocTest to unittests
+  * 2023-03-14 - Add test for shell
+  * 2023-03-14 - Skip broken commands
+  * 2023-03-14 - remove debug print
+* [v0.2.0](https://github.com/jedie/manage_django_project/compare/v0.1.1...v0.2.0)
+  * 2023-03-13 - NEW: "./manage.py shell" cmd2 shell with all registered Django manage commands
+* [v0.1.1](https://github.com/jedie/manage_django_project/compare/v0.1.0...v0.1.1)
+  * 2023-03-13 - Use `distribution_name` in publish call
+* [v0.1.0](https://github.com/jedie/manage_django_project/compare/v0.0.1...v0.1.0)
+  * 2023-03-12 - Remove a existing '.coverage' before create a new one
+  * 2023-03-12 - check settings
+  * 2023-03-12 - Rename test settings and check the used settings in test
+  * 2023-03-12 - Run tests with test settings, before publishing
+  * 2023-03-12 - Update README.md
+
+[comment]: <> (✂✂✂ auto generated history end ✂✂✂)
