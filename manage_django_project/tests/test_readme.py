@@ -1,12 +1,13 @@
+import os
 from importlib import import_module
 from pathlib import Path
+from unittest import skipIf
 
 from bx_py_utils.auto_doc import assert_readme_block
 from bx_py_utils.path import assert_is_file
-from cli_base.cli_tools.git_history import get_git_history
+from cli_base.cli_tools.git_history import update_readme_history
 from django.test import SimpleTestCase
 
-import manage_django_project
 from manage_django_project.management import commands
 from manage_django_project.tests import PROJECT_ROOT
 
@@ -52,15 +53,11 @@ class ReadmeTestCase(SimpleTestCase):
         text_block = f'\n{help_info}\n'
         assert_cli_help_in_readme(text_block=text_block, marker='command_info')
 
+    @skipIf(
+        # After a release the history may be "changed" because of version bump
+        # and we should not block merge requests because of this.
+        'GITHUB_ACTION' in os.environ,
+        'Skip on github actions',
+    )
     def test_readme_history(self):
-        git_history = get_git_history(
-            current_version=manage_django_project.__version__,
-            add_author=False,
-        )
-        history = '\n'.join(git_history)
-        assert_readme_block(
-            readme_path=PROJECT_ROOT / 'README.md',
-            text_block=f'\n{history}\n',
-            start_marker_line='[comment]: <> (✂✂✂ auto generated history start ✂✂✂)',
-            end_marker_line='[comment]: <> (✂✂✂ auto generated history end ✂✂✂)',
-        )
+        update_readme_history(raise_update_error=True)
