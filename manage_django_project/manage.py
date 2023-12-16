@@ -13,6 +13,7 @@ def execute_django_from_command_line(*, config: ManageConfig = None, argv=None):
         warnings.warn(
             'config argument for execute_django_from_command_line() is deprecated and will removed in the future!',
             DeprecationWarning,
+            stacklevel=2,
         )
 
     if argv is None:

@@ -75,7 +75,7 @@ def run_command_from_argv(command, argv: list) -> Result:
     """
     try:
         assert inspect.ismodule(command)
-        CommandClass = getattr(command, 'Command')
+        CommandClass = command.Command
         assert issubclass(CommandClass, BaseCommand)
     except Exception as err:
         raise AssertionError(f'{command!r} is no Django Management command: {err}')

@@ -34,6 +34,7 @@ dev = [
     "safety",  # https://github.com/pyupio/safety
     "mypy",  # https://github.com/python/mypy
     "twine",  # https://github.com/pypa/twine
+    "pre-commit",  # https://github.com/pre-commit/pre-commit
 
     # https://github.com/akaihola/darker
     # https://github.com/ikamensh/flynt
@@ -80,6 +81,10 @@ include = ["manage_django_project*", "manage_django_project_example*"]
 
 [tool.setuptools.dynamic]
 version = {attr = "manage_django_project.__version__"}
+
+
+[tool.cli_base]
+version_module_name = "manage_django_project" # Used by "update-readme-history" pre-commit hook
 
 
 [tool.darker]
