@@ -185,6 +185,8 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.6.4...main)
+  * 2023-12-19 - Apply manageprojects: Expand test matrix + update req. + skip Python 3.9
+  * 2023-12-19 - Setup django for unittests
   * 2023-12-16 - Bugfix code style
   * 2023-12-16 - Use update_readme_history & as git hook
   * 2023-11-07 - Update requirements

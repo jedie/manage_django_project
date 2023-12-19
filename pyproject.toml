@@ -7,12 +7,12 @@ readme = "README.md"
 authors = [
     {name = 'Jens Diemer', email = 'git@jensdiemer.de'}
 ]
-requires-python = ">=3.9,<4" # Keep Python 3.9 until Yunohost contains a newer Python Version ;)
+requires-python = ">=3.10"
 dependencies = [
     "django",
     "django-tools",  # https://github.com/jedie/django-tools
-    "cli-base-utilities>=0.4.3",  # https://github.com/jedie/cli-base-utilities
-    "manageprojects>=0.15.0",  # https://github.com/jedie/manageprojects
+    "cli-base-utilities",  # https://github.com/jedie/cli-base-utilities
+    "manageprojects",  # https://github.com/jedie/manageprojects
     "bx_py_utils",  # https://github.com/boxine/bx_py_utils
     "django-rich",  # https://github.com/adamchainz/django-rich
     "cmd2",  # https://github.com/python-cmd2/cmd2
@@ -28,6 +28,7 @@ dev = [
     "autopep8",  # https://github.com/hhatto/autopep8
     "pyupgrade",  # https://github.com/asottile/pyupgrade
     "flake8",  # https://github.com/pycqa/flake8
+    "flake8-bugbear",  # https://github.com/PyCQA/flake8-bugbear
     "pyflakes",  # https://github.com/PyCQA/pyflakes
     "codespell",  # https://github.com/codespell-project/codespell
     "EditorConfig",  # https://github.com/editorconfig/editorconfig-core-py
@@ -49,8 +50,8 @@ dev = [
     #'tomli;python_version<"3.11"',  # https://github.com/hukkin/tomli
 ]
 django32=["django>=3.2,<3.3"]
-django41=["django>=4.1,<4.2"]
 django42=["django>=4.2,<4.3"]
+django50=["django>=5.0,<5.1"]
 
 [project.urls]
 Documentation = "https://github.com/jedie/manage_django_project"
@@ -139,7 +140,7 @@ exclude_lines = [
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py{311,310,39}-django{42,41,32}
+envlist = py{312,311,310}-django{50,42,32}
 skip_missing_interpreters = True
 
 [testenv]
@@ -148,12 +149,12 @@ skip_install = true
 commands_pre =
     pip install -U pip-tools
     django32: pip-sync requirements.django32.txt
-    django41: pip-sync requirements.django41.txt
     django42: pip-sync requirements.django42.txt
+    django50: pip-sync requirements.django50.txt
 commands =
     django32: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer
-    django41: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer --shuffle --parallel
     django42: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer --shuffle --parallel
+    django50: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer --shuffle --parallel
 """
 
 
@@ -187,4 +188,5 @@ applied_migrations = [
     "2281f4b", # 2023-04-02T17:40:58+02:00
     "10c547a", # 2023-04-04T20:37:52+02:00
     "be35344", # 2023-08-17T20:41:16+02:00
+    "d6a1665", # 2023-12-17T16:34:59+01:00
 ]
