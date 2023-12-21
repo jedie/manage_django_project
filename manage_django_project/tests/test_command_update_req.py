@@ -25,6 +25,7 @@ class UpdateReqTestCase(SimpleTestCase):
     def test_basic_update_req(self):
         with RedirectOut() as buffer:
             popenargs = call_command_capture_subprocess(cmd_module=update_req)
+
         self.assertEqual(
             popenargs,
             [
@@ -72,9 +73,9 @@ class UpdateReqTestCase(SimpleTestCase):
                     '--generate-hashes',
                     'pyproject.toml',
                     '--extra=dev',
-                    '--extra=django41',
+                    '--extra=django42',
                     '--output-file',
-                    'requirements.django41.txt',
+                    'requirements.django42.txt',
                 ],
                 [
                     '.../bin/pip-compile',
@@ -84,11 +85,11 @@ class UpdateReqTestCase(SimpleTestCase):
                     '--generate-hashes',
                     'pyproject.toml',
                     '--extra=dev',
-                    '--extra=django42',
+                    '--extra=django50',
                     '--output-file',
-                    'requirements.django42.txt',
+                    'requirements.django50.txt',
                 ],
-                ['.../bin/pip-sync', 'requirements.django42.txt'],
+                ['.../bin/pip-sync', 'requirements.django50.txt'],
             ],
         )
         self.assertEqual(buffer.stderr, '')
@@ -97,16 +98,14 @@ class UpdateReqTestCase(SimpleTestCase):
         last_block = blocks[-1]
         self.assertEqual(
             last_block.strip(),
-            inspect.cleandoc(
-                '''
+            inspect.cleandoc('''
                 Generate requirement files:
                  * requirements.txt
                  * requirements.dev.txt
                  * requirements.django32.txt
-                 * requirements.django41.txt
                  * requirements.django42.txt
+                 * requirements.django50.txt
 
-                Install requirement from: requirements.django42.txt
-                '''
-            ).strip(),
+                Install requirement from: requirements.django50.txt
+                ''').strip(),
         )

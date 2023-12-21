@@ -7,6 +7,9 @@
 from .base import *  # noqa
 
 
+ALLOWED_HOSTS = ['testserver']
+
+
 # _____________________________________________________________________________
 # Manage Django Project
 
