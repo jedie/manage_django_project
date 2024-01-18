@@ -2,6 +2,7 @@
 *.egg-info
 __pycache__
 /dist/
+/build/
 /coverage.*
 *.orig
 
@@ -10,10 +11,6 @@ __pycache__
 !.flake8
 !.gitignore
 !.gitkeep
-
-# for django-dbbackup
-/backups/
-!/backups/.gitkeep
 
 # from test projects:
 /static/
