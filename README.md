@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.7.0...main)
+  * 2024-01-18 - update requirements
   * 2024-01-18 - manageprojects updates + set min. Python to 3.9
 * [v0.7.0](https://github.com/jedie/manage_django_project/compare/v0.6.4...v0.7.0)
   * 2023-12-19 - Apply manageprojects: Expand test matrix + update req. + skip Python 3.9

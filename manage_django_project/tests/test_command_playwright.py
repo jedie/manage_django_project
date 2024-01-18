@@ -13,5 +13,5 @@ class TestCase(SimpleTestCase):
 
         self.assertIn('manage_django_project_example playwright --help\n', output)
         self.assertIn('Usage: playwright [options] [command]\n', output)
-        self.assertIn('Playwright Test', output)
+        self.assertIn('Call playwright CLI', output)
         self.assertIn('install [options] [browser...]', output)
