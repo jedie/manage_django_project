@@ -17,7 +17,7 @@ def get_rstrip_paths():
     )
 
 
-def call_command_capture_subprocess(cmd_module) -> list[str]:
+def call_command_capture_subprocess(cmd_module) -> list:
     assert inspect.ismodule(cmd_module)
 
     with SubprocessCallMock() as call_mock:

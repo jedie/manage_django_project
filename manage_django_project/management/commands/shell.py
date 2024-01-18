@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import logging
 import os
 import sys
@@ -62,7 +64,7 @@ class ManageDjangoProjectApp(cmd2.Cmd):
     delattr(cmd2.Cmd, 'do_run_script')
     delattr(cmd2.Cmd, 'do_run_pyscript')
 
-    def __init__(self, *args, console: Console = None, **kwargs):
+    def __init__(self, *args, console: Console | None = None, **kwargs):
         if not console:
             self.console = get_console()
         else:
