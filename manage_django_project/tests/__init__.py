@@ -5,9 +5,14 @@ from pathlib import Path
 import django
 from bx_py_utils.test_utils.deny_requests import deny_any_real_request
 from rich import print
+from typeguard import install_import_hook
 
 import manage_django_project
 from manage_django_project.config import project_info
+
+
+# Check type annotations via typeguard in all tests:
+install_import_hook(packages=('manage_django_project', 'manage_django_project_example'))
 
 
 PROJECT_ROOT = Path(manage_django_project.__file__).parent.parent
