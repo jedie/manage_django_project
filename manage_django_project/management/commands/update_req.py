@@ -34,6 +34,7 @@ class Command(RichCommand):
             bin_path / 'pip-compile',
             '--allow-unsafe',  # https://pip-tools.readthedocs.io/en/latest/#deprecations
             '--resolver=backtracking',  # https://pip-tools.readthedocs.io/en/latest/#deprecations
+            '--strip-extras',  # https://pip-tools.readthedocs.io/en/latest/#deprecations
             '--upgrade',
             '--generate-hashes',
         ]
