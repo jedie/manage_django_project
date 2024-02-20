@@ -184,6 +184,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.7.2](https://github.com/jedie/manage_django_project/compare/v0.7.1...v0.7.2)
+  * 2024-02-20 - Add '--strip-extras' to pip-compile and update requirements
 * [v0.7.1](https://github.com/jedie/manage_django_project/compare/v0.7.0...v0.7.1)
   * 2024-01-18 - Use typeguard in tests
   * 2024-01-18 - update requirements
@@ -196,13 +198,13 @@ To make a new release, do this:
   * 2023-11-07 - Update requirements
 * [v0.6.4](https://github.com/jedie/manage_django_project/compare/v0.6.3...v0.6.4)
   * 2023-11-01 - update requirements
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.6.3](https://github.com/jedie/manage_django_project/compare/v0.6.2...v0.6.3)
   * 2023-11-01 - Update requirements
   * 2023-11-01 - Autogenerate history in README
   * 2023-11-01 - Bugfix subprocess timeout running manage commands
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.6.2](https://github.com/jedie/manage_django_project/compare/v0.6.1...v0.6.2)
   * 2023-09-24 - Use tools from https://github.com/jedie/cli-base-utilities
 * [v0.6.1](https://github.com/jedie/manage_django_project/compare/v0.6.0...v0.6.1)

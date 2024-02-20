@@ -3,6 +3,7 @@ import re
 from unittest.mock import patch
 
 from bx_py_utils.test_utils.redirect import RedirectOut
+from bx_py_utils.test_utils.snapshot import assert_snapshot
 from django.test import SimpleTestCase
 
 from manage_django_project.management.commands import shell, update_req
@@ -26,72 +27,6 @@ class UpdateReqTestCase(SimpleTestCase):
         with RedirectOut() as buffer:
             popenargs = call_command_capture_subprocess(cmd_module=update_req)
 
-        self.assertEqual(
-            popenargs,
-            [
-                ['.../bin/pip', 'install', '-U', 'pip'],
-                ['.../bin/pip', 'install', '-U', 'pip-tools'],
-                [
-                    '.../bin/pip-compile',
-                    '--allow-unsafe',
-                    '--resolver=backtracking',
-                    '--upgrade',
-                    '--generate-hashes',
-                    'pyproject.toml',
-                    '--output-file',
-                    'requirements.txt',
-                ],
-                [
-                    '.../bin/pip-compile',
-                    '--allow-unsafe',
-                    '--resolver=backtracking',
-                    '--upgrade',
-                    '--generate-hashes',
-                    'pyproject.toml',
-                    '--extra=dev',
-                    '--extra=dev',
-                    '--output-file',
-                    'requirements.dev.txt',
-                ],
-                [
-                    '.../bin/pip-compile',
-                    '--allow-unsafe',
-                    '--resolver=backtracking',
-                    '--upgrade',
-                    '--generate-hashes',
-                    'pyproject.toml',
-                    '--extra=dev',
-                    '--extra=django32',
-                    '--output-file',
-                    'requirements.django32.txt',
-                ],
-                [
-                    '.../bin/pip-compile',
-                    '--allow-unsafe',
-                    '--resolver=backtracking',
-                    '--upgrade',
-                    '--generate-hashes',
-                    'pyproject.toml',
-                    '--extra=dev',
-                    '--extra=django42',
-                    '--output-file',
-                    'requirements.django42.txt',
-                ],
-                [
-                    '.../bin/pip-compile',
-                    '--allow-unsafe',
-                    '--resolver=backtracking',
-                    '--upgrade',
-                    '--generate-hashes',
-                    'pyproject.toml',
-                    '--extra=dev',
-                    '--extra=django50',
-                    '--output-file',
-                    'requirements.django50.txt',
-                ],
-                ['.../bin/pip-sync', 'requirements.django50.txt'],
-            ],
-        )
         self.assertEqual(buffer.stderr, '')
 
         blocks = re.split(r'-{10,}', buffer.stdout)
@@ -109,3 +44,8 @@ class UpdateReqTestCase(SimpleTestCase):
                 Install requirement from: requirements.django50.txt
                 ''').strip(),
         )
+
+        # Check samples:
+        self.assertEqual(popenargs[0], ['.../bin/pip', 'install', '-U', 'pip'])
+        self.assertEqual(popenargs[-1], ['.../bin/pip-sync', 'requirements.django50.txt'])
+        assert_snapshot(got=popenargs)
