@@ -16,6 +16,7 @@ __pycache__
 /static/
 /media/
 *.sqlite3
+*.json
 
 # Include "ignored" *.json:
 !**/fixtures/*.json
