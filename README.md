@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.7.2...main)
+  * 2024-05-21 - update from manageprojects template
 * [v0.7.2](https://github.com/jedie/manage_django_project/compare/v0.7.1...v0.7.2)
   * 2024-02-20 - Add '--strip-extras' to pip-compile and update requirements
 * [v0.7.1](https://github.com/jedie/manage_django_project/compare/v0.7.0...v0.7.1)
