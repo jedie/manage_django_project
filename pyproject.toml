@@ -93,14 +93,12 @@ version_module_name = "manage_django_project" # Used by "update-readme-history" 
 src = ['.']
 revision = "origin/main..."
 line_length = 119
-verbose = true
 color = true
 skip_string_normalization = true
 diff = false
 check = false
 stdout = false
 isort = true
-flynt = true
 lint = [
     "flake8",
 ]
@@ -175,6 +173,7 @@ cookiecutter_template = "https://github.com/jedie/cookiecutter_templates/"
 cookiecutter_directory = "managed-django-project"
 applied_migrations = [
     "a66e5ae", # 2024-01-16T19:13:13+01:00
+    "1f3a70e", # 2024-05-21T21:22:39+02:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]
