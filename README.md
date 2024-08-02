@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.7.2...main)
+  * 2024-08-02 - Update requirements and add git pre commit hooks
   * 2024-05-21 - Update requirements
   * 2024-05-21 - Safety: Ignore CVE-2018-20225
   * 2024-05-21 - update from manageprojects template
