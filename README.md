@@ -23,11 +23,11 @@ Helper to develop Django projects:
 * `code_style` - Check/Fix project code style
 * `coverage` - Run tests with coverage and report
 * `install` - Just install the project as editable via pip (Useful if version has been changed)
+* `pip_audit` - Run `pip-audit` with configuration from `pyproject.toml`
 * `playwright` - Call playwright CLI
 * `project_info` - Information about the current Django project
 * `publish` - Build a new release and publish it to PyPi
 * `run_dev_server` - Setup test project and run django developer server
-* `safety` - Run safety check against current requirements files
 * `shell` - Go into cmd2 shell with all registered Django manage commands
 * `tox` - Run tests via tox
 * `update_req` - Update project requirements via pip-tools
@@ -184,7 +184,9 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.7.2...main)
+* [v0.8.0](https://github.com/jedie/manage_django_project/compare/v0.7.2...v0.8.0)
+  * 2024-08-02 - Replace "safety" by "pip-audit" and add tooling for it.
+  * 2024-08-02 - Update project setup
   * 2024-08-02 - Update requirements and add git pre commit hooks
   * 2024-05-21 - Update requirements
   * 2024-05-21 - Safety: Ignore CVE-2018-20225

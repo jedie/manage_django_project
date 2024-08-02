@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 
 from cli_base.cli_tools.subprocess_utils import verbose_check_call
+from cli_base.run_pip_audit import run_pip_audit
 from django_rich.management import RichCommand
 from manageprojects.utilities.pyproject_toml import TomlDocument, get_pyproject_toml
 
@@ -69,6 +70,8 @@ class Command(RichCommand):
                     )
                     last_requirements_name = requirements_name
                     requirements_names.append(requirements_name)
+
+        run_pip_audit(verbosity=options['verbosity'])
 
         # Install new dependencies in current .venv:
         verbose_check_call('pip-sync', last_requirements_name)
