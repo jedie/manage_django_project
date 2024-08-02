@@ -44,10 +44,9 @@ jobs:
       run: |
         ./manage.py --help
 
-    # FIXME:
-    #- name: 'Safety'
-    #  run: |
-    #    ./manage.py safety
+    - name: 'Run pip-audit'
+      run: |
+        ./manage.py pip_audit
 
     - name: 'Python ${{ matrix.python-version }} Django ${{ matrix.django-version }}'
       env:

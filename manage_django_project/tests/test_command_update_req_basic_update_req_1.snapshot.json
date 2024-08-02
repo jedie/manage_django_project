@@ -75,6 +75,14 @@
         "requirements.django50.txt"
     ],
     [
+        ".../bin/pip-audit",
+        "-v",
+        "--strict",
+        "--require-hashes",
+        "-r",
+        "requirements.dev.txt"
+    ],
+    [
         ".../bin/pip-sync",
         "requirements.django50.txt"
     ]
