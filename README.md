@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.9.0](https://github.com/jedie/manage_django_project/compare/v0.8.0...v0.9.0)
+  * 2025-02-12 - install pre commit in bootstrap
   * 2025-02-12 - Bugfix "publish" command
   * 2025-02-12 - Cleanup: Remove obsolete tox stuff
   * 2025-02-12 - pip-tools -> uv and tox -> nox
