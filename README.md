@@ -23,14 +23,14 @@ Helper to develop Django projects:
 * `code_style` - Check/Fix project code style
 * `coverage` - Run tests with coverage and report
 * `install` - Just install the project as editable via pip (Useful if version has been changed)
+* `nox` - Run tests via nox
 * `pip_audit` - Run `pip-audit` with configuration from `pyproject.toml`
 * `playwright` - Call playwright CLI
 * `project_info` - Information about the current Django project
 * `publish` - Build a new release and publish it to PyPi
 * `run_dev_server` - Setup test project and run django developer server
 * `shell` - Go into cmd2 shell with all registered Django manage commands
-* `tox` - Run tests via tox
-* `update_req` - Update project requirements via pip-tools
+* `update_req` - Update project requirements via uv
 * `update_test_snapshot_files` - Update all snapshot files (by remove and recreate all snapshot files)
 
 [comment]: <> (✂✂✂ auto generated command_info end ✂✂✂)
@@ -184,6 +184,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.9.0](https://github.com/jedie/manage_django_project/compare/v0.8.0...v0.9.0)
+  * 2025-02-12 - pip-tools -> uv and tox -> nox
 * [v0.8.0](https://github.com/jedie/manage_django_project/compare/v0.7.2...v0.8.0)
   * 2024-08-02 - Replace "safety" by "pip-audit" and add tooling for it.
   * 2024-08-02 - Update project setup
@@ -197,15 +199,15 @@ To make a new release, do this:
   * 2024-01-18 - Use typeguard in tests
   * 2024-01-18 - update requirements
   * 2024-01-18 - manageprojects updates + set min. Python to 3.9
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.7.0](https://github.com/jedie/manage_django_project/compare/v0.6.4...v0.7.0)
   * 2023-12-19 - Apply manageprojects: Expand test matrix + update req. + skip Python 3.9
   * 2023-12-19 - Setup django for unittests
   * 2023-12-16 - Bugfix code style
   * 2023-12-16 - Use update_readme_history & as git hook
   * 2023-11-07 - Update requirements
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.6.4](https://github.com/jedie/manage_django_project/compare/v0.6.3...v0.6.4)
   * 2023-11-01 - update requirements
 * [v0.6.3](https://github.com/jedie/manage_django_project/compare/v0.6.2...v0.6.3)

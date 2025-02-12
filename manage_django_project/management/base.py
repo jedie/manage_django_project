@@ -1,3 +1,4 @@
+from cli_base.cli_tools.subprocess_utils import ToolsExecutor
 from django_rich.management import RichCommand
 from rich.panel import Panel
 
@@ -36,3 +37,14 @@ class BasePassManageCommand(PrintHelpMixin, RichCommand):
 
     def run_from_argv(self, argv):
         self.print_help_once()
+
+
+class ManageDjangoToolsExecutor(ToolsExecutor):
+    """
+    Call tools from current Python /.venv/bin/ path.
+    """
+
+    def __init__(self):
+        project_info.assert_initialized()
+        project_root_path = project_info.config.project_root_path
+        super().__init__(cwd=project_root_path)
