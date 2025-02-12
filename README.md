@@ -89,10 +89,10 @@ manage_django_project_example = "manage_django_project_example.__main__:main"
 [manage_django_project]
 module_name="your_project_example"
 
-# Django settings used for all commands except test/coverage/tox:
+# Django settings used for all commands except test/coverage/nox:
 local_settings='your_project.settings.local'
 
-# Django settings used for test/coverage/tox commands:
+# Django settings used for test/coverage/nox commands:
 test_settings='your_project.settings.tests'
 ```
 
@@ -129,8 +129,8 @@ Just clone the project and start `./manage.py` to bootstrap a virtual environmen
 ~/django-for-runners$ ./manage.py test
 # or with coverage
 ~/django-for-runners$ ./manage.py coverage
-# or via tox:
-~/django-for-runners$ ./manage.py tox
+# or via nox:
+~/django-for-runners$ ./manage.py nox
 ```
 
 
@@ -145,10 +145,10 @@ You must add in your `pyproject.toml` the following stuff:
 [manage_django_project]
 module_name="your_project_example"
 
-# Django settings used for all commands except test/coverage/tox:
+# Django settings used for all commands except test/coverage/nox:
 local_settings='your_project.settings.local'
 
-# Django settings used for test/coverage/tox commands:
+# Django settings used for test/coverage/nox commands:
 test_settings='your_project.settings.tests'
 ```
 
@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.9.0](https://github.com/jedie/manage_django_project/compare/v0.8.0...v0.9.0)
+  * 2025-02-12 - Cleanup: Remove obsolete tox stuff
   * 2025-02-12 - pip-tools -> uv and tox -> nox
 * [v0.8.0](https://github.com/jedie/manage_django_project/compare/v0.7.2...v0.8.0)
   * 2024-08-02 - Replace "safety" by "pip-audit" and add tooling for it.

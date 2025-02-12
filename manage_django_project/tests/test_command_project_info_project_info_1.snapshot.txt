@@ -7,7 +7,7 @@ manage_config = ProjectInfo(
         project_root_path=PosixPath('.../manage_django_project'),
         local_settings='manage_django_project_example.settings.local',
         test_settings='manage_django_project_example.settings.tests',
-        test_settings_commands=('test', 'coverage', 'tox', 'update_test_snapshot_files')
+        test_settings_commands=('test', 'coverage', 'nox', 'update_test_snapshot_files')
     ),
     pyproject_toml_path=PosixPath('.../manage_django_project/pyproject.toml'),
     distribution_name='manage_django_project',

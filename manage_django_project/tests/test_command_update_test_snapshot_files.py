@@ -1,6 +1,5 @@
 from unittest.mock import patch
 
-from bx_py_utils.environ import OverrideEnviron
 from django.test import SimpleTestCase
 from manageprojects.test_utils.subprocess import SubprocessCallMock
 
@@ -42,8 +41,6 @@ class CallTestCase(EraseCoverageDataMixin, SimpleTestCase):
         project_info_mock = ProjectInfoMock()
         with SubprocessCallMock() as call_mock, patch(
             'manage_django_project.management.commands.update_test_snapshot_files.project_info', project_info_mock
-        ), OverrideEnviron(
-            TOX_ENV_NAME='foobar',  # env variable used to "detect" tox run
         ):
             try:
                 command.run_from_argv(argv=[])
@@ -59,7 +56,7 @@ class CallTestCase(EraseCoverageDataMixin, SimpleTestCase):
         )
         self.assertEqual(project_info_mock.unlink_calls, 1)
 
-        # Just normal tox calls:
+        # Just normal nox calls:
         popenargs = call_mock.get_popenargs(rstrip_paths=get_rstrip_paths())
         self.assertEqual(
             popenargs,

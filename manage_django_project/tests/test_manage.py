@@ -21,7 +21,7 @@ def call_manage_py(*args) -> str:
 class ManageTestCase(TestCase):
     def test_manage_py_call(self):
         output = call_manage_py('--version')
-        self.assertIn(__version__, output)  # Check Django version will not work with tox!
+        self.assertIn(__version__, output)  # Check Django version
 
         output = call_manage_py('--help')
         self.assertIn('.venv/bin/manage_django_project_example --help', output)
