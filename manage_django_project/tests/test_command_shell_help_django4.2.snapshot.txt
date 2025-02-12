@@ -28,8 +28,8 @@ dumpdata          migrate         sqlsequencereset
 
 manage_django_project
 =====================
-code_style  install    playwright    run_dev_server  update_req
-coverage    pip_audit  project_info  tox             update_test_snapshot_files
+code_style  install  pip_audit   project_info    update_req
+coverage    nox      playwright  run_dev_server  update_test_snapshot_files
 
 manage_django_project_example
 =============================

@@ -7,7 +7,7 @@ readme = "README.md"
 authors = [
     {name = 'Jens Diemer', email = 'git@jensdiemer.de'}
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
     "django",
     "django-tools",  # https://github.com/jedie/django-tools
@@ -17,13 +17,13 @@ dependencies = [
     "django-rich",  # https://github.com/adamchainz/django-rich
     "cmd2",  # https://github.com/python-cmd2/cmd2
 ]
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
-    "pip-tools",  # https://github.com/jazzband/pip-tools/
+    "uv",  # https://github.com/astral-sh/uv
     "playwright",  # https://github.com/microsoft/playwright-python
     "tblib",   # https://github.com/ionelmc/python-tblib
-    "tox",  # https://github.com/tox-dev/tox
+    "nox",  # https://github.com/wntrblm/nox
     "coverage",  # https://github.com/nedbat/coveragepy
     "autopep8",  # https://github.com/hhatto/autopep8
     "pyupgrade",  # https://github.com/asottile/pyupgrade
@@ -45,14 +45,7 @@ dev = [
     "darker[flynt, isort, color]",
 
     "tomli",  # https://github.com/hukkin/tomli
-    #
-    # tomli only needed for Python <3.11, but see pip bug:
-    # https://github.com/pypa/pip/issues/9644 / https://github.com/jazzband/pip-tools/issues/1866
-    #'tomli;python_version<"3.11"',  # https://github.com/hukkin/tomli
 ]
-django32=["django>=3.2,<3.3"]
-django42=["django>=4.2,<4.3"]
-django50=["django>=5.0,<5.1"]
 
 [project.urls]
 Documentation = "https://github.com/jedie/manage_django_project"
@@ -128,10 +121,10 @@ branch = true
 parallel = true
 concurrency = ["multiprocessing"]
 source = ['.']
-command_line = '-m manage_django_project_example test --shuffle --parallel --buffer'
+command_line = '-m unittest --verbose --locals --buffer'
 
 [tool.coverage.report]
-omit = ['.*', '*/tests/*', '*/migrations/*']
+omit = ['.*', '*/tests/*']
 skip_empty = true
 fail_under = 30
 show_missing = true
@@ -141,29 +134,6 @@ exclude_lines = [
     'raise NotImplementedError',
     'if __name__ == .__main__.:',
 ]
-
-
-[tool.tox]  # https://tox.wiki/en/latest/config.html#pyproject-toml
-legacy_tox_ini = """
-[tox]
-isolated_build = True
-envlist = py{312,311,310}-django{50,42,32}
-skip_missing_interpreters = True
-
-[testenv]
-passenv = *
-skip_install = true
-commands_pre =
-    pip install -U pip-tools
-    django32: pip-sync requirements.django32.txt
-    django42: pip-sync requirements.django42.txt
-    django50: pip-sync requirements.django50.txt
-commands =
-    django32: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer
-    django42: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer --shuffle --parallel
-    django50: {envpython} -m coverage run --context='{envname}' -m manage_django_project_example test --buffer --shuffle --parallel
-"""
-
 
 [tool.mypy]
 warn_unused_configs = true

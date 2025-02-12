@@ -64,7 +64,7 @@ class CallTestCase(EraseCoverageDataMixin, SimpleTestCase):
         self.assertEqual(
             popenargs,
             [
-                ['.../bin/python', '-m', 'tox'],
+                ['.../bin/nox'],
                 ['.../bin/coverage', 'combine', '--append'],
                 ['.../bin/coverage', 'report'],
                 ['.../bin/coverage', 'xml'],
