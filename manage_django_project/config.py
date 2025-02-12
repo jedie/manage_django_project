@@ -29,7 +29,7 @@ class ManageConfig:
     test_settings: str  # ... run tests
 
     # All Django manage commands that should use the "test" settings, instead of "local" settings:
-    test_settings_commands: tuple = ('test', 'coverage', 'tox', 'update_test_snapshot_files')
+    test_settings_commands: tuple = ('test', 'coverage', 'nox', 'update_test_snapshot_files')
 
     def __post_init__(self):
         for attr_name in ('local_settings', 'test_settings'):
