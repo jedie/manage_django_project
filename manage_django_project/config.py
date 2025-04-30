@@ -1,10 +1,10 @@
 import dataclasses
 import logging
+import tomllib
 from importlib import import_module
 from importlib.util import find_spec
 from pathlib import Path
 from types import ModuleType
-from typing import Optional
 
 from bx_py_utils.path import assert_is_file
 from packaging.version import Version
@@ -12,10 +12,6 @@ from packaging.version import Version
 from manage_django_project.exceptions import ConfigKeyError, ModuleNotFound, SettingsNotFound
 
 
-try:
-    import tomllib  # New in Python 3.11
-except ImportError:
-    import tomli as tomllib
 logger = logging.getLogger(__name__)
 
 
@@ -107,9 +103,9 @@ class ProjectInfo:
     initialized: bool = False
 
     config: ManageConfig = None
-    pyproject_toml_path: Optional[Path] = None
-    distribution_name: Optional[str] = None
-    module_version: Optional[Version] = None
+    pyproject_toml_path: Path | None = None
+    distribution_name: str | None = None
+    module_version: Version | None = None
 
     def initialize(self):
         if self.initialized:
@@ -138,7 +134,7 @@ class ProjectInfo:
 
         return self.config.local_settings
 
-    def get_current_settings(self, argv) -> Optional[str]:
+    def get_current_settings(self, argv) -> str | None:
         for arg in argv:
             if arg.startswith('--settings'):
                 # e.g.: Start a manage command with --settings option -> don't force any settings
