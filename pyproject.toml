@@ -9,7 +9,7 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "django",
+    "django",  # https://docs.djangoproject.com
     "django-tools",  # https://github.com/jedie/django-tools
     "cli-base-utilities",  # https://github.com/jedie/cli-base-utilities
     "manageprojects",  # https://github.com/jedie/manageprojects
@@ -21,6 +21,7 @@ dependencies = [
 dev = [
     "cmd2_ext_test",  # https://github.com/python-cmd2/cmd2/tree/master/plugins/ext_test
     "uv",  # https://github.com/astral-sh/uv
+    "hatchling",  # https://github.com/pypa/hatch/tree/master/backend
     "playwright",  # https://github.com/microsoft/playwright-python
     "tblib",   # https://github.com/ionelmc/python-tblib
     "nox",  # https://github.com/wntrblm/nox
@@ -37,9 +38,6 @@ dev = [
     "twine",  # https://github.com/pypa/twine
     "pre-commit",  # https://github.com/pre-commit/pre-commit
     "typeguard",  # https://github.com/agronholm/typeguard/
-
-    # setuptools use by "publish" command:
-    "setuptools",  # https://github.com/pypa/setuptools
 
     # https://github.com/akaihola/darker
     # https://github.com/ikamensh/flynt
@@ -70,15 +68,14 @@ test_settings='manage_django_project_example.settings.tests'
 
 
 [build-system]
-requires = ["setuptools>=61.0", "setuptools_scm>=7.1"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["manage_django_project*", "manage_django_project_example*"]
+[tool.hatch.build.targets.wheel]
+packages = ["manage_django_project", "manage_django_project_example"]
 
-[tool.setuptools.dynamic]
-version = {attr = "manage_django_project.__version__"}
+[tool.hatch.version]
+path = "manage_django_project/__init__.py"
 
 
 [tool.cli_base]
@@ -119,7 +116,7 @@ line_length=119
 lines_after_imports=2
 
 
-[tool.coverage.run]
+[tool.coverage.run]  # https://coverage.readthedocs.io/en/latest/config.html#run
 branch = true
 parallel = true
 concurrency = ["multiprocessing"]
@@ -127,7 +124,7 @@ source = ['.']
 command_line = '-m unittest --verbose --locals --buffer'
 
 [tool.coverage.report]
-omit = ['.*', '*/tests/*']
+omit = ['.*', '*/tests/*', '*/migrations/*']
 skip_empty = true
 fail_under = 30
 show_missing = true
@@ -156,6 +153,7 @@ applied_migrations = [
     "a66e5ae", # 2024-01-16T19:13:13+01:00
     "1f3a70e", # 2024-05-21T21:22:39+02:00
     "52669d0", # 2024-08-02T15:47:04+02:00
+    "4662321", # 2025-04-22T20:40:34+02:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]

@@ -184,7 +184,10 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
-* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.9.0...main)
+* [v0.9.1](https://github.com/jedie/manage_django_project/compare/v0.9.0...v0.9.1)
+  * 2025-04-30 - replace setuptools with hatchling
+  * 2025-04-30 - modernize config.py
+  * 2025-04-30 - Apply manageprojects updates
   * 2025-04-30 - Update requirements
 * [v0.9.0](https://github.com/jedie/manage_django_project/compare/v0.8.0...v0.9.0)
   * 2025-02-12 - install pre commit in bootstrap
