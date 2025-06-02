@@ -25,5 +25,6 @@ class Command(RichCommand):
         # Install new dependencies in current .venv:
         tools_executor.verbose_check_call('uv', 'sync')
 
-        # Update git pre-commit hooks:
-        tools_executor.verbose_check_call('pre-commit', 'autoupdate')
+        if tools_executor.is_executable('pre-commit'):
+            # Update git pre-commit hooks:
+            tools_executor.verbose_check_call('pre-commit', 'autoupdate')

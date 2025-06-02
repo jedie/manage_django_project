@@ -184,6 +184,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [v0.9.2](https://github.com/jedie/manage_django_project/compare/v0.9.1...v0.9.2)
+  * 2025-06-02 - Run "pre-commit autoupdate" only if "pre-commit" is installed
 * [v0.9.1](https://github.com/jedie/manage_django_project/compare/v0.9.0...v0.9.1)
   * 2025-04-30 - replace setuptools with hatchling
   * 2025-04-30 - modernize config.py
@@ -201,11 +203,11 @@ To make a new release, do this:
   * 2024-05-21 - Update requirements
   * 2024-05-21 - Safety: Ignore CVE-2018-20225
   * 2024-05-21 - update from manageprojects template
-* [v0.7.2](https://github.com/jedie/manage_django_project/compare/v0.7.1...v0.7.2)
-  * 2024-02-20 - Add '--strip-extras' to pip-compile and update requirements
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.7.2](https://github.com/jedie/manage_django_project/compare/v0.7.1...v0.7.2)
+  * 2024-02-20 - Add '--strip-extras' to pip-compile and update requirements
 * [v0.7.1](https://github.com/jedie/manage_django_project/compare/v0.7.0...v0.7.1)
   * 2024-01-18 - Use typeguard in tests
   * 2024-01-18 - update requirements
