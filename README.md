@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.9.3](https://github.com/jedie/manage_django_project/compare/v0.9.2...v0.9.3)
+  * 2025-08-05 - Update text matrix: DJANGO_VERSIONS = ['5.2', '5.1', '4.2']
   * 2025-08-05 - Update requirements
   * 2025-07-29 - Add CallManagePy test helper (#68)
   * 2025-07-29 - Add CallManagePy test helper

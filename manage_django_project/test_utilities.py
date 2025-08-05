@@ -1,10 +1,18 @@
 import shutil
 from pathlib import Path
 
+import django
 from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.subprocess_utils import verbose_check_output
 
 from manage_django_project.tests import PROJECT_ROOT
+
+
+def get_django_main_version() -> str:
+    """
+    Get the main Django version as a string, e.g. '5.2'.
+    """
+    return '.'.join(str(x) for x in django.VERSION[:2])
 
 
 class CallManagePy:
