@@ -185,8 +185,9 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.9.3](https://github.com/jedie/manage_django_project/compare/v0.9.2...v0.9.3)
+  * 2025-08-05 - Update requirements
   * 2025-07-29 - Add CallManagePy test helper (#68)
-  * 2025-07-29 - Update requirements
+  * 2025-07-29 - Add CallManagePy test helper
 * [v0.9.2](https://github.com/jedie/manage_django_project/compare/v0.9.1...v0.9.2)
   * 2025-06-02 - Run "pre-commit autoupdate" only if "pre-commit" is installed
 * [v0.9.1](https://github.com/jedie/manage_django_project/compare/v0.9.0...v0.9.1)
