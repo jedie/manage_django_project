@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.10.0](https://github.com/jedie/manage_django_project/compare/v0.9.3...v0.10.0)
+  * 2025-09-03 - print always a new line before help text panel
   * 2025-09-03 - Replace Darker with Ruff
 * [v0.9.3](https://github.com/jedie/manage_django_project/compare/v0.9.2...v0.9.3)
   * 2025-08-05 - Update text matrix: DJANGO_VERSIONS = ['5.2', '5.1', '4.2']

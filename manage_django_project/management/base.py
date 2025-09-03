@@ -16,6 +16,7 @@ class PrintHelpMixin:
 
     def print_help_once(self):
         if not self._help_printed:
+            self.console.print()
             self.console.print(Panel(f'[bold]{self.help}'))
 
         self._help_printed = True
