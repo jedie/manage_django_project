@@ -1,9 +1,9 @@
 import os
-import unittest.util
 from pathlib import Path
+import unittest.util
 
-import django
 from bx_py_utils.test_utils.deny_requests import deny_any_real_request
+import django
 from rich import print
 from typeguard import install_import_hook
 

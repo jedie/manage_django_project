@@ -1,7 +1,7 @@
 import inspect
+from pathlib import Path
 import sys
 import unittest
-from pathlib import Path
 
 from django.core.management import call_command
 from manageprojects.test_utils.subprocess import SubprocessCallMock
@@ -21,7 +21,11 @@ def call_command_capture_subprocess(cmd_module) -> list:
     assert inspect.ismodule(cmd_module)
 
     with SubprocessCallMock() as call_mock:
-        call_command(cmd_module.Command())
+        try:
+            call_command(cmd_module.Command())
+        except SystemExit:
+            # some commands may call sys.exit()
+            pass
 
     popenargs = call_mock.get_popenargs(rstrip_paths=get_rstrip_paths())
     return popenargs

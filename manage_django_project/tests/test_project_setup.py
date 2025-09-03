@@ -27,7 +27,7 @@ class ProjectSettingsTestCase(SimpleTestCase):
         self.assertEqual(project_info.module_version, version)
 
     def test_code_style(self):
-        # Just run our django manage command that call's darker and flake8
+        # Just run our django manage command that call's ruff
 
         try:
             call_command(code_style.Command())
