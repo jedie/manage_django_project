@@ -21,10 +21,4 @@ class CodeStyleTestCase(SimpleTestCase):
 
     def test_basic_code_style(self):
         popenargs = call_command_capture_subprocess(cmd_module=code_style)
-        self.assertEqual(
-            popenargs,
-            [
-                ['.../bin/darker', '--color'],
-                ['.../bin/flake8'],
-            ],
-        )
+        self.assertEqual(popenargs, [['.../bin/ruff', 'check', '--fix']])

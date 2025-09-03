@@ -3,9 +3,9 @@ from unittest.mock import patch
 from django.core.management import call_command
 from django.test import SimpleTestCase
 
-import manage_django_project_example
 from manage_django_project.management.commands import publish
 from manage_django_project.tests import PROJECT_ROOT
+import manage_django_project_example
 
 
 class ConfigTestCase(SimpleTestCase):

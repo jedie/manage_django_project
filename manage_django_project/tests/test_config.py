@@ -1,13 +1,12 @@
 import inspect
 import logging
 import os
-import tempfile
 from pathlib import Path
+import tempfile
 
 from bx_py_utils.path import assert_is_file
 from django.test import SimpleTestCase
 
-import manage_django_project_example
 from manage_django_project.config import (
     ManageConfig,
     NoPyprojectTomlFound,
@@ -17,6 +16,7 @@ from manage_django_project.config import (
     read_pyproject_toml,
 )
 from manage_django_project.exceptions import ConfigKeyError, ModuleNotFound, SettingsNotFound
+import manage_django_project_example
 
 
 logger = logging.getLogger(__name__)
