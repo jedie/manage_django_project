@@ -1,7 +1,7 @@
 from unittest.mock import patch
 
 from bx_py_utils.test_utils.snapshot import assert_text_snapshot
-from cli_base.cli_tools.test_utils.rich_test_utils import NoColorEnvRichClick
+from cli_base.cli_tools.test_utils.rich_test_utils import NoColorEnvRich
 from django.test import SimpleTestCase
 from django_tools.unittest_utils.call_management_commands import captured_call_command
 
@@ -24,7 +24,7 @@ class InstallTestCase(SimpleTestCase):
     maxDiff = None
 
     def test_project_info(self):
-        with NoColorEnvRichClick(width=120):
+        with NoColorEnvRich(width=120):
             output, stderr = captured_call_command(project_info)
         self.assertEqual(stderr, '')
         self.assertIn('manage_config = ProjectInfo(', output)

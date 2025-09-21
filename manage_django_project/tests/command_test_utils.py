@@ -1,7 +1,7 @@
 import inspect
-from pathlib import Path
 import sys
 import unittest
+from pathlib import Path
 
 from django.core.management import call_command
 from manageprojects.test_utils.subprocess import SubprocessCallMock

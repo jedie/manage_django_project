@@ -1,9 +1,9 @@
 import dataclasses
+import logging
+import tomllib
 from importlib import import_module
 from importlib.util import find_spec
-import logging
 from pathlib import Path
-import tomllib
 from types import ModuleType
 
 from bx_py_utils.path import assert_is_file
