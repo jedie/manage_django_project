@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from importlib import import_module
 import logging
 import os
 import sys
+from importlib import import_module
 
-from cli_base.cli_tools.subprocess_utils import verbose_check_call
 import cmd2
+from cli_base.cli_tools.subprocess_utils import verbose_check_call
 from cmd2 import Statement, categorize
 from cmd2.constants import CMD_ATTR_ARGPARSER, CMD_ATTR_PRESERVE_QUOTES
 from cmd2.decorators import _set_parser_prog

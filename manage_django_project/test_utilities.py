@@ -1,9 +1,9 @@
-from pathlib import Path
 import shutil
+from pathlib import Path
 
+import django
 from bx_py_utils.path import assert_is_file
 from cli_base.cli_tools.subprocess_utils import verbose_check_output
-import django
 
 from manage_django_project.tests import PROJECT_ROOT
 
