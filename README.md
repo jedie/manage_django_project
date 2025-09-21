@@ -185,6 +185,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.10.0...main)
+  * 2025-09-21 - Apply manageprojects updates
   * 2025-09-21 - Update requirements
 * [v0.10.0](https://github.com/jedie/manage_django_project/compare/v0.9.3...v0.10.0)
   * 2025-09-03 - print always a new line before help text panel
