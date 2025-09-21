@@ -184,6 +184,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.10.0...main)
+  * 2025-09-21 - Update requirements
 * [v0.10.0](https://github.com/jedie/manage_django_project/compare/v0.9.3...v0.10.0)
   * 2025-09-03 - print always a new line before help text panel
   * 2025-09-03 - Replace Darker with Ruff
@@ -194,14 +196,14 @@ To make a new release, do this:
   * 2025-07-29 - Add CallManagePy test helper
 * [v0.9.2](https://github.com/jedie/manage_django_project/compare/v0.9.1...v0.9.2)
   * 2025-06-02 - Run "pre-commit autoupdate" only if "pre-commit" is installed
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.9.1](https://github.com/jedie/manage_django_project/compare/v0.9.0...v0.9.1)
   * 2025-04-30 - replace setuptools with hatchling
   * 2025-04-30 - modernize config.py
   * 2025-04-30 - Apply manageprojects updates
   * 2025-04-30 - Update requirements
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.9.0](https://github.com/jedie/manage_django_project/compare/v0.8.0...v0.9.0)
   * 2025-02-12 - install pre commit in bootstrap
   * 2025-02-12 - Bugfix "publish" command
