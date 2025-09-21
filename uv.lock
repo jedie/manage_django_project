@@ -539,6 +539,19 @@ wheels = [
 ]
 
 [[package]]
+name = "django-debug-toolbar"
+version = "6.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "sqlparse" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c5/d5/5fc90234532088aeec5faa48d5b09951cc7eab6626030ed427d3bd8cd9bc/django_debug_toolbar-6.0.0.tar.gz", hash = "sha256:6eb9fa6f4a5884bf04004700ffb5a44043f1fff38784447fc52c1633448c8c14", size = 305331, upload-time = "2025-07-25T13:11:48.68Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/05/b5/4724a8c18fcc5b09dca7b7a0e70c34208317bb110075ad12484d6588ae91/django_debug_toolbar-6.0.0-py3-none-any.whl", hash = "sha256:0cf2cac5c307b77d6e143c914e5c6592df53ffe34642d93929e5ef095ae56841", size = 266967, upload-time = "2025-07-25T13:11:47.265Z" },
+]
+
+[[package]]
 name = "django-rich"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -553,7 +566,7 @@ wheels = [
 
 [[package]]
 name = "django-tools"
-version = "0.56.2"
+version = "0.57.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "bleach" },
@@ -561,13 +574,14 @@ dependencies = [
     { name = "bx-py-utils" },
     { name = "colorlog" },
     { name = "django" },
+    { name = "django-debug-toolbar" },
     { name = "gunicorn" },
     { name = "icdiff" },
     { name = "pprintpp" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/24/ec/0f0c55599c348dd209427a5dc64c59a9d803b52274914e49dd8bba3a7166/django_tools-0.56.2.tar.gz", hash = "sha256:88a192f2873f0411b99ee1aba04f2779133284cd18a5c78976e8e4605ba5d7f7", size = 354732, upload-time = "2024-08-25T14:12:24.287Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/63/39/e7ebc9e1bc816fbe37ec8d5cb9a8ee106f918f0c14b3a1418423db14ec31/django_tools-0.57.0.tar.gz", hash = "sha256:663870a9edce4252217e504c3de8b5886bba594f4e03acf71fe27374435ea880", size = 267026, upload-time = "2025-09-21T08:50:22.041Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ee/90/a3c9f923b229afffa8e68eb1cded654ffa42e2b96552a8fa1d153f017f32/django_tools-0.56.2-py3-none-any.whl", hash = "sha256:29c25be814d74cd9f554d7d45bc205f5570e5feaa4232cbd09cc913c46b20c07", size = 239036, upload-time = "2024-08-25T14:12:21.63Z" },
+    { url = "https://files.pythonhosted.org/packages/42/e3/26bbc4cc70109bdade090103d23d88ea8b1e402cc7acc35f24343f6b1a11/django_tools-0.57.0-py3-none-any.whl", hash = "sha256:a22bf403d1ca2946b9e76d343d8ed0435be449fa244ea3bc34ac71d95dbb81f8", size = 255020, upload-time = "2025-09-21T08:50:20.047Z" },
 ]
 
 [[package]]
@@ -867,7 +881,7 @@ requires-dist = [
     { name = "cmd2" },
     { name = "django" },
     { name = "django-rich" },
-    { name = "django-tools" },
+    { name = "django-tools", specifier = ">=0.57.0" },
     { name = "manageprojects" },
 ]
 
