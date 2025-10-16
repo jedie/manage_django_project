@@ -186,6 +186,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [v0.11.1](https://github.com/jedie/manage_django_project/compare/v0.11.0...v0.11.1)
+  * 2025-10-16 - Expand test matrix with Python v3.14
   * 2025-10-16 - Update requirements
 * [v0.11.0](https://github.com/jedie/manage_django_project/compare/v0.10.1...v0.11.0)
   * 2025-09-21 - New manage command: "make_messages"
