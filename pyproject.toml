@@ -76,7 +76,9 @@ version_module_name = "manage_django_project" # Used by "update-readme-history" 
 requirements=["requirements.dev.txt"]
 strict=true
 require_hashes=true
-ignore-vuln=[]
+ignore-vuln=[
+    "GHSA-4xh5-x5gv-qwph",  # https://github.com/advisories/GHSA-4xh5-x5gv-qwph
+]
 
 
 [tool.ruff]
@@ -145,6 +147,7 @@ applied_migrations = [
     "52669d0", # 2024-08-02T15:47:04+02:00
     "4662321", # 2025-04-22T20:40:34+02:00
     "ae399b9", # 2025-09-21T09:34:36+02:00
+    "4d9f75b", # 2025-10-13T12:11:18+02:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]
