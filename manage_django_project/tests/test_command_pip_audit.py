@@ -52,8 +52,6 @@ class PipAuditTestCase(SimpleTestCase):
                     '--require-hashes',
                     '--disable-pip',
                     '-v',
-                    '--ignore-vuln',
-                    'GHSA-4xh5-x5gv-qwph',
                     '-r',
                     '/tmp/requirements<rnd>.txt',
                 ],

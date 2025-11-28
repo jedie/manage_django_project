@@ -72,13 +72,9 @@ version_module_name = "manage_django_project" # Used by "update-readme-history" 
 
 
 [tool.cli_base.pip_audit]
-# https://github.com/jedie/cli-base-utilities/blob/main/docs/pip_audit.md
-requirements=["requirements.dev.txt"]
 strict=true
 require_hashes=true
-ignore-vuln=[
-    "GHSA-4xh5-x5gv-qwph",  # https://github.com/advisories/GHSA-4xh5-x5gv-qwph
-]
+ignore-vuln=[]
 
 
 [tool.ruff]
@@ -148,6 +144,7 @@ applied_migrations = [
     "4662321", # 2025-04-22T20:40:34+02:00
     "ae399b9", # 2025-09-21T09:34:36+02:00
     "4d9f75b", # 2025-10-13T12:11:18+02:00
+    "222442d", # 2025-11-25T18:41:21+01:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]
