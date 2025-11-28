@@ -185,6 +185,7 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.11.1...main)
 * [v0.11.1](https://github.com/jedie/manage_django_project/compare/v0.11.0...v0.11.1)
   * 2025-10-16 - Expand test matrix with Python v3.14
   * 2025-10-16 - Update requirements
@@ -195,12 +196,12 @@ To make a new release, do this:
   * 2025-09-21 - Update django-tools
   * 2025-09-21 - Apply manageprojects updates
   * 2025-09-21 - Update requirements
-* [v0.10.0](https://github.com/jedie/manage_django_project/compare/v0.9.3...v0.10.0)
-  * 2025-09-03 - print always a new line before help text panel
-  * 2025-09-03 - Replace Darker with Ruff
 
 <details><summary>Expand older history entries ...</summary>
 
+* [v0.10.0](https://github.com/jedie/manage_django_project/compare/v0.9.3...v0.10.0)
+  * 2025-09-03 - print always a new line before help text panel
+  * 2025-09-03 - Replace Darker with Ruff
 * [v0.9.3](https://github.com/jedie/manage_django_project/compare/v0.9.2...v0.9.3)
   * 2025-08-05 - Update text matrix: DJANGO_VERSIONS = ['5.2', '5.1', '4.2']
   * 2025-08-05 - Update requirements
