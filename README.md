@@ -1,4 +1,8 @@
-# manage_django_project
+<h1>
+  <img src="https://raw.githubusercontent.com/jedie/manage_django_project/main/manage_django_project/static/manage_django_project.svg" width="32px" alt="Logo">
+  manage_django_project
+</h1>
+
 
 [![tests](https://github.com/jedie/manage_django_project/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/jedie/manage_django_project/actions/workflows/tests.yml)
 [![codecov](https://codecov.io/github/jedie/manage_django_project/branch/main/graph/badge.svg)](https://app.codecov.io/github/jedie/manage_django_project)
@@ -186,6 +190,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.11.1...main)
+  * 2025-11-28 - Add logo
   * 2025-11-28 - Update tests and run configs
   * 2025-11-28 - Update requirements
 * [v0.11.1](https://github.com/jedie/manage_django_project/compare/v0.11.0...v0.11.1)
