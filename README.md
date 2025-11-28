@@ -186,6 +186,8 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.11.1...main)
+  * 2025-11-28 - Update tests and run configs
+  * 2025-11-28 - Update requirements
 * [v0.11.1](https://github.com/jedie/manage_django_project/compare/v0.11.0...v0.11.1)
   * 2025-10-16 - Expand test matrix with Python v3.14
   * 2025-10-16 - Update requirements
