@@ -189,6 +189,7 @@ To make a new release, do this:
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
 * [**dev**](https://github.com/jedie/manage_django_project/compare/v0.11.1...main)
+  * 2026-01-30 - Bugfix tests around "pip-audit"
   * 2026-01-30 - Update requirements and apply manageprojects updates
   * 2025-11-28 - Update README.md
   * 2025-11-28 - Add logo
