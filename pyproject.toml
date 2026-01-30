@@ -34,7 +34,6 @@ dev = [
     "twine",  # https://github.com/pypa/twine
     "pre-commit",  # https://github.com/pre-commit/pre-commit
     "typeguard",  # https://github.com/agronholm/typeguard/
-    "tomli",  # https://github.com/hukkin/tomli
 ]
 
 [project.urls]
@@ -145,6 +144,7 @@ applied_migrations = [
     "ae399b9", # 2025-09-21T09:34:36+02:00
     "4d9f75b", # 2025-10-13T12:11:18+02:00
     "222442d", # 2025-11-25T18:41:21+01:00
+    "af6dd62", # 2026-01-26T16:04:53+01:00
 ]
 
 [manageprojects.cookiecutter_context.cookiecutter]
