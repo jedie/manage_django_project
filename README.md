@@ -188,6 +188,8 @@ To make a new release, do this:
 
 [comment]: <> (✂✂✂ auto generated history start ✂✂✂)
 
+* [**dev**](https://github.com/jedie/manage_django_project/compare/v0.11.2...main)
+  * 2026-01-30 - Update test matrix: Remove Django 5.1 and add 6.0
 * [v0.11.2](https://github.com/jedie/manage_django_project/compare/v0.11.1...v0.11.2)
   * 2026-01-30 - Update CI config
   * 2026-01-30 - Bugfix tests around "pip-audit"
@@ -201,14 +203,14 @@ To make a new release, do this:
   * 2025-10-16 - Update requirements
 * [v0.11.0](https://github.com/jedie/manage_django_project/compare/v0.10.1...v0.11.0)
   * 2025-09-21 - New manage command: "make_messages"
+
+<details><summary>Expand older history entries ...</summary>
+
 * [v0.10.1](https://github.com/jedie/manage_django_project/compare/v0.10.0...v0.10.1)
   * 2025-09-21 - fix code style
   * 2025-09-21 - Update django-tools
   * 2025-09-21 - Apply manageprojects updates
   * 2025-09-21 - Update requirements
-
-<details><summary>Expand older history entries ...</summary>
-
 * [v0.10.0](https://github.com/jedie/manage_django_project/compare/v0.9.3...v0.10.0)
   * 2025-09-03 - print always a new line before help text panel
   * 2025-09-03 - Replace Darker with Ruff
